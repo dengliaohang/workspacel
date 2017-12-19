@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../Styles/formui.css" />
+    <link rel="stylesheet" type="text/css" href="../Styles/base.css"/>
+    <link rel="stylesheet" type="text/css" href="../Styles/admin-all.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery-ui-1.8.22.custom.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../Styles/ui-lightness/jquery-ui-1.8.22.custom.css" /> 
+    <script type="text/javascript" src="../Scripts/ChurAlert.min.js?skin=blue"></script>
+    <script type="text/javascript" src="../Scripts/chur-alert.1.0.js"></script>
+    <script type="text/javascript" src="../Scripts/tb.js"></script>
+</head>
+<body>
+	<input class="btn" id="find" type="button" value="提交" data-toggle="modal" href="#myModal" data-keyboard="false" data-backdrop="false" />
+</body>
+<script type="text/javascript">
+$(function(){
+		
+		$(".datepicker").datepicker();
+	    $('.modal').hide();
+	   $('#find').click(function () { 
+	       $.dialog({
+	           title: '查询结果',
+	           content: 'url:Template/griddatalist.html', 
+				width:650,
+				height:450
+	   			})
+		})
+</script>
+</html>

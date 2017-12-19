@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzj.dao.THistoryMsgMapper" >
+  <resultMap id="BaseResultMap" type="com.zzj.entity.THistoryMsg" >
+    <id column="cid" property="cid" jdbcType="INTEGER" />
+    <result column="id" property="id" jdbcType="VARCHAR" />
+    <result column="fromid" property="fromid" jdbcType="VARCHAR" />
+    <result column="toid" property="toid" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="avatar" property="avatar" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="LONGNVARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="mine" property="mine" jdbcType="BIT" />
+    <result column="timestamp" property="timestamp" jdbcType="BIGINT" />
+    <result column="flag" property="flag" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    cid, id, fromid, toid, username, avatar, content, type, mine, timestamp, flag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_HistoryMsg
+    where cid = #{cid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from T_HistoryMsg
+    where cid = #{cid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zzj.entity.THistoryMsg" >
+    insert into T_HistoryMsg (cid, id, fromid, 
+      toid, username, avatar, 
+      content, type, mine, 
+      timestamp, flag)
+    values (#{cid,jdbcType=INTEGER}, #{id,jdbcType=VARCHAR}, #{fromid,jdbcType=VARCHAR}, 
+      #{toid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, 
+      #{content,jdbcType=LONGNVARCHAR}, #{type,jdbcType=VARCHAR}, #{mine,jdbcType=BIT}, 
+      #{timestamp,jdbcType=BIGINT}, #{flag,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzj.entity.THistoryMsg" >
+    insert into T_HistoryMsg
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cid != null" >
+        cid,
+      </if>
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="fromid != null" >
+        fromid,
+      </if>
+      <if test="toid != null" >
+        toid,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="avatar != null" >
+        avatar,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="mine != null" >
+        mine,
+      </if>
+      <if test="timestamp != null" >
+        timestamp,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cid != null" >
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="fromid != null" >
+        #{fromid,jdbcType=VARCHAR},
+      </if>
+      <if test="toid != null" >
+        #{toid,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null" >
+        #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="mine != null" >
+        #{mine,jdbcType=BIT},
+      </if>
+      <if test="timestamp != null" >
+        #{timestamp,jdbcType=BIGINT},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzj.entity.THistoryMsg" >
+    update T_HistoryMsg
+    <set >
+      <if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="fromid != null" >
+        fromid = #{fromid,jdbcType=VARCHAR},
+      </if>
+      <if test="toid != null" >
+        toid = #{toid,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null" >
+        avatar = #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="mine != null" >
+        mine = #{mine,jdbcType=BIT},
+      </if>
+      <if test="timestamp != null" >
+        timestamp = #{timestamp,jdbcType=BIGINT},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=BIT},
+      </if>
+    </set>
+    where cid = #{cid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zzj.entity.THistoryMsg" >
+    update T_HistoryMsg
+    set id = #{id,jdbcType=VARCHAR},
+      fromid = #{fromid,jdbcType=VARCHAR},
+      toid = #{toid,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      avatar = #{avatar,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGNVARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      mine = #{mine,jdbcType=BIT},
+      timestamp = #{timestamp,jdbcType=BIGINT},
+      flag = #{flag,jdbcType=BIT}
+    where cid = #{cid,jdbcType=INTEGER}
+  </update>
+</mapper>

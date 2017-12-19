@@ -1,0 +1,17 @@
+package com.zzj.dao;
+
+import com.zzj.entity.PTitle;
+
+public interface PTitleMapper {
+    public int deleteByPrimaryKey(Integer id)throws Exception;
+
+    public int insert(PTitle record)throws Exception;
+
+    public int insertSelective(PTitle record)throws Exception;
+
+    public PTitle selectByPrimaryKey(Integer id)throws Exception;
+
+    public int updateByPrimaryKeySelective(PTitle record)throws Exception;
+
+    public int updateByPrimaryKey(PTitle record)throws Exception;
+}

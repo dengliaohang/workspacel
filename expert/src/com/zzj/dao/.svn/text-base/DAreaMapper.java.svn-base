@@ -1,0 +1,17 @@
+package com.zzj.dao;
+
+import com.zzj.entity.DArea;
+
+public interface DAreaMapper {
+    public int deleteByPrimaryKey(String code) throws Exception;
+
+    public int insert(DArea record) throws Exception;
+
+    int insertSelective(DArea record);
+
+    DArea selectByPrimaryKey(String code);
+
+    int updateByPrimaryKeySelective(DArea record);
+
+    int updateByPrimaryKey(DArea record);
+}

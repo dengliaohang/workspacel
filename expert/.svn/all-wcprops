@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/MyRepository/!svn/ver/24/expert
+END
+.mymetadata
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/MyRepository/!svn/ver/2/expert/.mymetadata
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/MyRepository/!svn/ver/2/expert/.project
+END
+.classpath
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/MyRepository/!svn/ver/4/expert/.classpath
+END

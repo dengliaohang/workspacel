@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzj.dao.DRegionMapper" >
+  <resultMap id="BaseResultMap" type="com.zzj.entity.DRegion" >
+    <id column="RegionId" property="regionid" jdbcType="INTEGER" />
+    <result column="Name" property="name" jdbcType="VARCHAR" />
+    <result column="Class" property="classs" jdbcType="CHAR" />
+    <result column="Zone" property="zone" jdbcType="VARCHAR" />
+    <result column="ZoneCode" property="zonecode" jdbcType="CHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.zzj.entity.DRegion" >
+    insert into D_region (RegionId, Name, Class, 
+      Zone, ZoneCode)
+    values (#{regionid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{class,jdbcType=CHAR}, 
+      #{zone,jdbcType=VARCHAR}, #{zonecode,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzj.entity.DRegion" >
+    insert into D_region
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="regionid != null" >
+        RegionId,
+      </if>
+      <if test="name != null" >
+        Name,
+      </if>
+      <if test="class != null" >
+        Class,
+      </if>
+      <if test="zone != null" >
+        Zone,
+      </if>
+      <if test="zonecode != null" >
+        ZoneCode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="regionid != null" >
+        #{regionid,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="class != null" >
+        #{class,jdbcType=CHAR},
+      </if>
+      <if test="zone != null" >
+        #{zone,jdbcType=VARCHAR},
+      </if>
+      <if test="zonecode != null" >
+        #{zonecode,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  
+  
+  <select id="selectAllFirstDRegion"  resultMap="BaseResultMap">
+  	select   DISTINCT zone,zoneCode from d_region   
+  </select>
+  
+   <select id="selectAllDRegionByFirstCode" parameterType="Map" resultMap="BaseResultMap">
+  	select * from d_region
+  	where zoneCode=#{zoneCode} and class=#{classId}
+  </select>
+  
+   <select id="selectAllDRegionBySecondCode" parameterType="Map" resultMap="BaseResultMap">
+  	select * from d_region 
+  	where regionId  like CONCAT(#{regionid},'%')
+  </select>
+  
+</mapper>

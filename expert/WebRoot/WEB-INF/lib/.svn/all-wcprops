@@ -1,0 +1,281 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/MyRepository/!svn/ver/4/expert/WebRoot/WEB-INF/lib
+END
+spring-context-4.0.2.RELEASE.jar
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/spring-context-4.0.2.RELEASE.jar
+END
+spring-context-support-4.0.2.RELEASE.jar
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/spring-context-support-4.0.2.RELEASE.jar
+END
+spring-framework-bom-4.0.2.RELEASE.jar
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/spring-framework-bom-4.0.2.RELEASE.jar
+END
+jackson-mapper-asl-1.9.12.jar
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/jackson-mapper-asl-1.9.12.jar
+END
+spring-webmvc-portlet-4.0.2.RELEASE.jar
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/spring-webmvc-portlet-4.0.2.RELEASE.jar
+END
+junit-4.11.jar
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/MyRepository/!svn/ver/4/expert/WebRoot/WEB-INF/lib/junit-4.11.jar
+END
+commons-dbcp-1.2.2.jar
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/commons-dbcp-1.2.2.jar
+END
+junit-4.7.jar
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/junit-4.7.jar
+END
+aopalliance-1.0.jar
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/aopalliance-1.0.jar
+END
+spring-jdbc-4.0.2.RELEASE.jar
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/spring-jdbc-4.0.2.RELEASE.jar
+END
+log4j-api-2.0-beta1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/log4j-api-2.0-beta1.jar
+END
+spring-aop-4.0.2.RELEASE.jar
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/spring-aop-4.0.2.RELEASE.jar
+END
+c3p0-0.9.5.2.jar
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/c3p0-0.9.5.2.jar
+END
+spring-beans-4.0.2.RELEASE.jar
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/spring-beans-4.0.2.RELEASE.jar
+END
+spring-messaging-4.0.2.RELEASE.jar
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/spring-messaging-4.0.2.RELEASE.jar
+END
+spring-tx-4.0.2.RELEASE.jar
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/spring-tx-4.0.2.RELEASE.jar
+END
+spring-build-src-4.0.2.RELEASE.jar
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/spring-build-src-4.0.2.RELEASE.jar
+END
+httpclient-4.2.1-sources.jar
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/httpclient-4.2.1-sources.jar
+END
+spring-webmvc-4.0.2.RELEASE.jar
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/spring-webmvc-4.0.2.RELEASE.jar
+END
+log4j-core-2.0-beta1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/log4j-core-2.0-beta1.jar
+END
+spring-websocket-4.0.2.RELEASE.jar
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/spring-websocket-4.0.2.RELEASE.jar
+END
+log4j-1.2.15.jar
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/log4j-1.2.15.jar
+END
+slf4j-api.jar
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/slf4j-api.jar
+END
+slf4j-log4j12.jar
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/slf4j-log4j12.jar
+END
+sqljdbc4-2.0.jar
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/sqljdbc4-2.0.jar
+END
+mybatis-spring-1.2.2.jar
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/mybatis-spring-1.2.2.jar
+END
+apache-mime4j-0.6.jar
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/apache-mime4j-0.6.jar
+END
+spring-jms-4.0.2.RELEASE.jar
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/spring-jms-4.0.2.RELEASE.jar
+END
+spring-test-4.0.2.RELEASE.jar
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/spring-test-4.0.2.RELEASE.jar
+END
+jackson-core-asl-1.9.12.jar
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/jackson-core-asl-1.9.12.jar
+END
+spring-web-4.0.2.RELEASE.jar
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/spring-web-4.0.2.RELEASE.jar
+END
+mysql-connector-java-5.1.38.jar
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/mysql-connector-java-5.1.38.jar
+END
+spring-expression-4.0.2.RELEASE.jar
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/spring-expression-4.0.2.RELEASE.jar
+END
+fastjson-1.1.30.jar
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/fastjson-1.1.30.jar
+END
+spring-aspects-4.0.2.RELEASE.jar
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/spring-aspects-4.0.2.RELEASE.jar
+END
+spring-core-4.0.2.RELEASE.jar
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/spring-core-4.0.2.RELEASE.jar
+END
+mybatis-3.2.8.jar
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/mybatis-3.2.8.jar
+END
+spring-oxm-4.0.2.RELEASE.jar
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/spring-oxm-4.0.2.RELEASE.jar
+END
+commons-pool-1.6.jar
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/commons-pool-1.6.jar
+END
+spring-instrument-4.0.2.RELEASE.jar
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/spring-instrument-4.0.2.RELEASE.jar
+END
+mchange-commons-java-0.2.11.jar
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/mchange-commons-java-0.2.11.jar
+END
+org.apache.commons-logging-1.0.4.jar
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/org.apache.commons-logging-1.0.4.jar
+END
+spring-instrument-tomcat-4.0.2.RELEASE.jar
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/spring-instrument-tomcat-4.0.2.RELEASE.jar
+END
+spring-orm-4.0.2.RELEASE.jar
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/MyRepository/!svn/ver/2/expert/WebRoot/WEB-INF/lib/spring-orm-4.0.2.RELEASE.jar
+END
+servlet-api.jar
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/MyRepository/!svn/ver/4/expert/WebRoot/WEB-INF/lib/servlet-api.jar
+END
+spring-test.jar
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/MyRepository/!svn/ver/4/expert/WebRoot/WEB-INF/lib/spring-test.jar
+END

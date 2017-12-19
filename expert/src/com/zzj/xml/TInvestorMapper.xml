@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzj.dao.TInvestorMapper" >
+  <resultMap id="BaseResultMap" type="com.zzj.entity.TInvestor" >
+    <id column="Id" property="id" jdbcType="CHAR" />
+    <result column="LocationId" property="locationid" jdbcType="VARCHAR" />
+    <result column="Reputation" property="reputation" jdbcType="NVARCHAR" />
+    <result column="AreaId" property="areaid" jdbcType="VARCHAR" />
+    <result column="Name" property="name" jdbcType="NVARCHAR" />
+    <result column="Description" property="description" jdbcType="NVARCHAR" />
+    <result column="Leader" property="leader" jdbcType="NVARCHAR" />
+    <result column="Image" property="image" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, LocationId, Reputation, AreaId, Name, Description, Leader, Image
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_investor
+    where Id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from T_investor
+    where Id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zzj.entity.TInvestor" >
+    insert into T_investor (Id, LocationId, Reputation, 
+      AreaId, Name, Description, 
+      Leader, Image)
+    values (#{id,jdbcType=CHAR}, #{locationid,jdbcType=VARCHAR}, #{reputation,jdbcType=NVARCHAR}, 
+      #{areaid,jdbcType=VARCHAR}, #{name,jdbcType=NVARCHAR}, #{description,jdbcType=NVARCHAR}, 
+      #{leader,jdbcType=NVARCHAR}, #{image,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzj.entity.TInvestor" >
+    insert into T_investor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="locationid != null" >
+        LocationId,
+      </if>
+      <if test="reputation != null" >
+        Reputation,
+      </if>
+      <if test="areaid != null" >
+        AreaId,
+      </if>
+      <if test="name != null" >
+        Name,
+      </if>
+      <if test="description != null" >
+        Description,
+      </if>
+      <if test="leader != null" >
+        Leader,
+      </if>
+      <if test="image != null" >
+        Image,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="locationid != null" >
+        #{locationid,jdbcType=VARCHAR},
+      </if>
+      <if test="reputation != null" >
+        #{reputation,jdbcType=NVARCHAR},
+      </if>
+      <if test="areaid != null" >
+        #{areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=NVARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=NVARCHAR},
+      </if>
+      <if test="leader != null" >
+        #{leader,jdbcType=NVARCHAR},
+      </if>
+      <if test="image != null" >
+        #{image,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzj.entity.TInvestor" >
+    update T_investor
+    <set >
+      <if test="locationid != null" >
+        LocationId = #{locationid,jdbcType=VARCHAR},
+      </if>
+      <if test="reputation != null" >
+        Reputation = #{reputation,jdbcType=NVARCHAR},
+      </if>
+      <if test="areaid != null" >
+        AreaId = #{areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        Name = #{name,jdbcType=NVARCHAR},
+      </if>
+      <if test="description != null" >
+        Description = #{description,jdbcType=NVARCHAR},
+      </if>
+      <if test="leader != null" >
+        Leader = #{leader,jdbcType=NVARCHAR},
+      </if>
+      <if test="image != null" >
+        Image = #{image,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zzj.entity.TInvestor" >
+    update T_investor
+    set LocationId = #{locationid,jdbcType=VARCHAR},
+      Reputation = #{reputation,jdbcType=NVARCHAR},
+      AreaId = #{areaid,jdbcType=VARCHAR},
+      Name = #{name,jdbcType=NVARCHAR},
+      Description = #{description,jdbcType=NVARCHAR},
+      Leader = #{leader,jdbcType=NVARCHAR},
+      Image = #{image,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

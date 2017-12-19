@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bbdj8.bus.dao.RandomDao">
+
+	<select id="queryObject" resultType="com.bbdj8.bus.entity.RandomEntity">
+		select * from bbdj_random where randomno = #{value}
+	</select>
+
+	<select id="queryList" resultType="com.bbdj8.bus.entity.RandomEntity">
+		select * from bbdj_random 
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="queryTotal" resultType="int">
+		select count(*) from bbdj_random 
+	</select>
+	 
+	<insert id="save" parameterType="com.bbdj8.bus.entity.RandomEntity" useGeneratedKeys="true" keyProperty="randomno">
+		insert into bbdj_random
+		(
+			randomno
+		)
+		values
+		(
+			#{randomno}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bbdj8.bus.entity.RandomEntity">
+		update bbdj_random 
+		<set>
+			randomno = #{randomno}
+		</set>
+		where randomno = #{randomno}
+	</update>
+	
+	<delete id="delete">
+		delete from bbdj_random where randomno = #{value}
+	</delete>
+	
+	<delete id="deleteBatch">
+		delete from bbdj_random where randomno in 
+		<foreach item="randomno" collection="array" open="(" separator="," close=")">
+			#{randomno}
+		</foreach>
+	</delete>
+
+</mapper>

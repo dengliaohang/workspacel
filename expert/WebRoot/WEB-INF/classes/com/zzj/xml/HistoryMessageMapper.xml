@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzj.dao.HistoryMessageMapper" >
+  <resultMap id="BaseResultMap" type="com.zzj.entity.HistoryMessage" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="sendPerson" property="sendperson" jdbcType="VARCHAR" />
+    <result column="sendId" property="sendid" jdbcType="CHAR" />
+    <result column="receivePerson" property="receiveperson" jdbcType="VARCHAR" />
+    <result column="receiveId" property="receiveid" jdbcType="CHAR" />
+    <result column="sendDateTime" property="senddatetime" jdbcType="TIMESTAMP" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="CHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.zzj.entity.HistoryMessage" extends="BaseResultMap" >
+    <result column="sendContent" property="sendcontent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, sendPerson, sendId, receivePerson, receiveId, sendDateTime, image, flag
+  </sql>
+  <sql id="Blob_Column_List" >
+    sendContent
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from historymessage
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from historymessage
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zzj.entity.HistoryMessage" >
+    insert into historymessage (id, sendPerson, sendId, 
+      receivePerson, receiveId, sendDateTime, 
+      image, flag, sendContent
+      )
+    values (#{id,jdbcType=INTEGER}, #{sendperson,jdbcType=VARCHAR}, #{sendid,jdbcType=CHAR}, 
+      #{receiveperson,jdbcType=VARCHAR}, #{receiveid,jdbcType=CHAR}, #{senddatetime,jdbcType=TIMESTAMP}, 
+      #{image,jdbcType=VARCHAR}, #{flag,jdbcType=CHAR}, #{sendcontent,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzj.entity.HistoryMessage" >
+    insert into historymessage
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="sendperson != null" >
+        sendPerson,
+      </if>
+      <if test="sendid != null" >
+        sendId,
+      </if>
+      <if test="receiveperson != null" >
+        receivePerson,
+      </if>
+      <if test="receiveid != null" >
+        receiveId,
+      </if>
+      <if test="senddatetime != null" >
+        sendDateTime,
+      </if>
+      <if test="image != null" >
+        image,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+      <if test="sendcontent != null" >
+        sendContent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sendperson != null" >
+        #{sendperson,jdbcType=VARCHAR},
+      </if>
+      <if test="sendid != null" >
+        #{sendid,jdbcType=CHAR},
+      </if>
+      <if test="receiveperson != null" >
+        #{receiveperson,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveid != null" >
+        #{receiveid,jdbcType=CHAR},
+      </if>
+      <if test="senddatetime != null" >
+        #{senddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="image != null" >
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=CHAR},
+      </if>
+      <if test="sendcontent != null" >
+        #{sendcontent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzj.entity.HistoryMessage" >
+    update historymessage
+    <set >
+      <if test="sendperson != null" >
+        sendPerson = #{sendperson,jdbcType=VARCHAR},
+      </if>
+      <if test="sendid != null" >
+        sendId = #{sendid,jdbcType=CHAR},
+      </if>
+      <if test="receiveperson != null" >
+        receivePerson = #{receiveperson,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveid != null" >
+        receiveId = #{receiveid,jdbcType=CHAR},
+      </if>
+      <if test="senddatetime != null" >
+        sendDateTime = #{senddatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="image != null" >
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=CHAR},
+      </if>
+      <if test="sendcontent != null" >
+        sendContent = #{sendcontent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zzj.entity.HistoryMessage" >
+    update historymessage
+    set sendPerson = #{sendperson,jdbcType=VARCHAR},
+      sendId = #{sendid,jdbcType=CHAR},
+      receivePerson = #{receiveperson,jdbcType=VARCHAR},
+      receiveId = #{receiveid,jdbcType=CHAR},
+      sendDateTime = #{senddatetime,jdbcType=TIMESTAMP},
+      image = #{image,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=CHAR},
+      sendContent = #{sendcontent,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zzj.entity.HistoryMessage" >
+    update historymessage
+    set sendPerson = #{sendperson,jdbcType=VARCHAR},
+      sendId = #{sendid,jdbcType=CHAR},
+      receivePerson = #{receiveperson,jdbcType=VARCHAR},
+      receiveId = #{receiveid,jdbcType=CHAR},
+      sendDateTime = #{senddatetime,jdbcType=TIMESTAMP},
+      image = #{image,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

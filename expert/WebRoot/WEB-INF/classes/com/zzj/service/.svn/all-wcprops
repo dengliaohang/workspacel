@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/MyRepository/!svn/ver/24/expert/src/com/zzj/service
+END
+TNewsService.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/MyRepository/!svn/ver/13/expert/src/com/zzj/service/TNewsService.java
+END
+WebSetupService.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/MyRepository/!svn/ver/11/expert/src/com/zzj/service/WebSetupService.java
+END
+TPersonService.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/MyRepository/!svn/ver/24/expert/src/com/zzj/service/TPersonService.java
+END
+TCommentService.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/MyRepository/!svn/ver/14/expert/src/com/zzj/service/TCommentService.java
+END
+DAreaService.java
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/MyRepository/!svn/ver/14/expert/src/com/zzj/service/DAreaService.java
+END
+HistoryMessageService.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/MyRepository/!svn/ver/14/expert/src/com/zzj/service/HistoryMessageService.java
+END
+TMessageService.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/MyRepository/!svn/ver/13/expert/src/com/zzj/service/TMessageService.java
+END
+FriendsService.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/MyRepository/!svn/ver/14/expert/src/com/zzj/service/FriendsService.java
+END
+TConsultService.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/MyRepository/!svn/ver/14/expert/src/com/zzj/service/TConsultService.java
+END
+DRegionService.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/MyRepository/!svn/ver/14/expert/src/com/zzj/service/DRegionService.java
+END
+TAccountService.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/MyRepository/!svn/ver/14/expert/src/com/zzj/service/TAccountService.java
+END
+TFeedBackService.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/MyRepository/!svn/ver/13/expert/src/com/zzj/service/TFeedBackService.java
+END
+TOrderService.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/MyRepository/!svn/ver/11/expert/src/com/zzj/service/TOrderService.java
+END
+TAchievementService.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/MyRepository/!svn/ver/14/expert/src/com/zzj/service/TAchievementService.java
+END
+PayLogService.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/MyRepository/!svn/ver/14/expert/src/com/zzj/service/PayLogService.java
+END
+TDemandService.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/MyRepository/!svn/ver/13/expert/src/com/zzj/service/TDemandService.java
+END
+TExpertCacheService.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/MyRepository/!svn/ver/13/expert/src/com/zzj/service/TExpertCacheService.java
+END

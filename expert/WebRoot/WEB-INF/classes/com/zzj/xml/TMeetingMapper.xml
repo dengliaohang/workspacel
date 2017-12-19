@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzj.dao.TMeetingMapper" >
+  <resultMap id="BaseResultMap" type="com.zzj.entity.TMeeting" >
+    <id column="Id" property="id" jdbcType="INTEGER" />
+    <result column="Name" property="name" jdbcType="NVARCHAR" />
+    <result column="Image" property="image" jdbcType="NVARCHAR" />
+    <result column="Unit" property="unit" jdbcType="NVARCHAR" />
+    <result column="Depart" property="depart" jdbcType="NVARCHAR" />
+    <result column="Major" property="major" jdbcType="NVARCHAR" />
+    <result column="Title" property="title" jdbcType="NVARCHAR" />
+    <result column="Email" property="email" jdbcType="VARCHAR" />
+    <result column="Phone" property="phone" jdbcType="CHAR" />
+    <result column="Sex" property="sex" jdbcType="INTEGER" />
+    <result column="TrafficNum" property="trafficnum" jdbcType="NVARCHAR" />
+    <result column="IsPick" property="ispick" jdbcType="BIT" />
+    <result column="IsStay" property="isstay" jdbcType="INTEGER" />
+    <result column="Message" property="message" jdbcType="NVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, Name, Image, Unit, Depart, Major, Title, Email, Phone, Sex, TrafficNum, IsPick, 
+    IsStay, Message
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_Meeting
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from T_Meeting
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zzj.entity.TMeeting" >
+    insert into T_Meeting (Id, Name, Image, 
+      Unit, Depart, Major, 
+      Title, Email, Phone, 
+      Sex, TrafficNum, IsPick, 
+      IsStay, Message)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=NVARCHAR}, #{image,jdbcType=NVARCHAR}, 
+      #{unit,jdbcType=NVARCHAR}, #{depart,jdbcType=NVARCHAR}, #{major,jdbcType=NVARCHAR}, 
+      #{title,jdbcType=NVARCHAR}, #{email,jdbcType=VARCHAR}, #{phone,jdbcType=CHAR}, 
+      #{sex,jdbcType=INTEGER}, #{trafficnum,jdbcType=NVARCHAR}, #{ispick,jdbcType=BIT}, 
+      #{isstay,jdbcType=INTEGER}, #{message,jdbcType=NVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzj.entity.TMeeting" >
+    insert into T_Meeting
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="name != null" >
+        Name,
+      </if>
+      <if test="image != null" >
+        Image,
+      </if>
+      <if test="unit != null" >
+        Unit,
+      </if>
+      <if test="depart != null" >
+        Depart,
+      </if>
+      <if test="major != null" >
+        Major,
+      </if>
+      <if test="title != null" >
+        Title,
+      </if>
+      <if test="email != null" >
+        Email,
+      </if>
+      <if test="phone != null" >
+        Phone,
+      </if>
+      <if test="sex != null" >
+        Sex,
+      </if>
+      <if test="trafficnum != null" >
+        TrafficNum,
+      </if>
+      <if test="ispick != null" >
+        IsPick,
+      </if>
+      <if test="isstay != null" >
+        IsStay,
+      </if>
+      <if test="message != null" >
+        Message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=NVARCHAR},
+      </if>
+      <if test="image != null" >
+        #{image,jdbcType=NVARCHAR},
+      </if>
+      <if test="unit != null" >
+        #{unit,jdbcType=NVARCHAR},
+      </if>
+      <if test="depart != null" >
+        #{depart,jdbcType=NVARCHAR},
+      </if>
+      <if test="major != null" >
+        #{major,jdbcType=NVARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=NVARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=CHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="trafficnum != null" >
+        #{trafficnum,jdbcType=NVARCHAR},
+      </if>
+      <if test="ispick != null" >
+        #{ispick,jdbcType=BIT},
+      </if>
+      <if test="isstay != null" >
+        #{isstay,jdbcType=INTEGER},
+      </if>
+      <if test="message != null" >
+        #{message,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzj.entity.TMeeting" >
+    update T_Meeting
+    <set >
+      <if test="name != null" >
+        Name = #{name,jdbcType=NVARCHAR},
+      </if>
+      <if test="image != null" >
+        Image = #{image,jdbcType=NVARCHAR},
+      </if>
+      <if test="unit != null" >
+        Unit = #{unit,jdbcType=NVARCHAR},
+      </if>
+      <if test="depart != null" >
+        Depart = #{depart,jdbcType=NVARCHAR},
+      </if>
+      <if test="major != null" >
+        Major = #{major,jdbcType=NVARCHAR},
+      </if>
+      <if test="title != null" >
+        Title = #{title,jdbcType=NVARCHAR},
+      </if>
+      <if test="email != null" >
+        Email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        Phone = #{phone,jdbcType=CHAR},
+      </if>
+      <if test="sex != null" >
+        Sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="trafficnum != null" >
+        TrafficNum = #{trafficnum,jdbcType=NVARCHAR},
+      </if>
+      <if test="ispick != null" >
+        IsPick = #{ispick,jdbcType=BIT},
+      </if>
+      <if test="isstay != null" >
+        IsStay = #{isstay,jdbcType=INTEGER},
+      </if>
+      <if test="message != null" >
+        Message = #{message,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zzj.entity.TMeeting" >
+    update T_Meeting
+    set Name = #{name,jdbcType=NVARCHAR},
+      Image = #{image,jdbcType=NVARCHAR},
+      Unit = #{unit,jdbcType=NVARCHAR},
+      Depart = #{depart,jdbcType=NVARCHAR},
+      Major = #{major,jdbcType=NVARCHAR},
+      Title = #{title,jdbcType=NVARCHAR},
+      Email = #{email,jdbcType=VARCHAR},
+      Phone = #{phone,jdbcType=CHAR},
+      Sex = #{sex,jdbcType=INTEGER},
+      TrafficNum = #{trafficnum,jdbcType=NVARCHAR},
+      IsPick = #{ispick,jdbcType=BIT},
+      IsStay = #{isstay,jdbcType=INTEGER},
+      Message = #{message,jdbcType=NVARCHAR}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

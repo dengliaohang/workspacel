@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzj.dao.TAchieveOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.zzj.entity.TAchieveOrder" >
+    <result column="Id" property="id" jdbcType="CHAR" />
+    <result column="AchieveId" property="achieveid" jdbcType="CHAR" />
+    <result column="Name" property="name" jdbcType="NVARCHAR" />
+    <result column="Creater" property="creater" jdbcType="CHAR" />
+    <result column="Buyer" property="buyer" jdbcType="CHAR" />
+    <result column="BuyCount" property="buycount" jdbcType="INTEGER" />
+    <result column="CancelReason" property="cancelreason" jdbcType="NVARCHAR" />
+    <result column="CanCelDate" property="canceldate" jdbcType="TIMESTAMP" />
+    <result column="UnitPrice" property="unitprice" jdbcType="DECIMAL" />
+    <result column="TotalPrice" property="totalprice" jdbcType="DECIMAL" />
+    <result column="TransferType" property="transfertype" jdbcType="INTEGER" />
+    <result column="BuyDay" property="buyday" jdbcType="TIMESTAMP" />
+    <result column="PayDay" property="payday" jdbcType="TIMESTAMP" />
+    <result column="IsSent" property="issent" jdbcType="BIT" />
+    <result column="SendDay" property="sendday" jdbcType="TIMESTAMP" />
+    <result column="IsLoan" property="isloan" jdbcType="BIT" />
+    <result column="LoanDay" property="loanday" jdbcType="TIMESTAMP" />
+    <result column="Satisfy" property="satisfy" jdbcType="INTEGER" />
+    <result column="State" property="state" jdbcType="INTEGER" />
+    <result column="EvaLevel" property="evalevel" jdbcType="INTEGER" />
+    <result column="Refund" property="refund" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="com.zzj.entity.TAchieveOrder" >
+    insert into T_AchieveOrder (Id, AchieveId, Name, 
+      Creater, Buyer, BuyCount, 
+      CancelReason, CanCelDate, UnitPrice, 
+      TotalPrice, TransferType, BuyDay, 
+      PayDay, IsSent, SendDay, 
+      IsLoan, LoanDay, Satisfy, 
+      State, EvaLevel, Refund
+      )
+    values (#{id,jdbcType=CHAR}, #{achieveid,jdbcType=CHAR}, #{name,jdbcType=NVARCHAR}, 
+      #{creater,jdbcType=CHAR}, #{buyer,jdbcType=CHAR}, #{buycount,jdbcType=INTEGER}, 
+      #{cancelreason,jdbcType=NVARCHAR}, #{canceldate,jdbcType=TIMESTAMP}, #{unitprice,jdbcType=DECIMAL}, 
+      #{totalprice,jdbcType=DECIMAL}, #{transfertype,jdbcType=INTEGER}, #{buyday,jdbcType=TIMESTAMP}, 
+      #{payday,jdbcType=TIMESTAMP}, #{issent,jdbcType=BIT}, #{sendday,jdbcType=TIMESTAMP}, 
+      #{isloan,jdbcType=BIT}, #{loanday,jdbcType=TIMESTAMP}, #{satisfy,jdbcType=INTEGER}, 
+      #{state,jdbcType=INTEGER}, #{evalevel,jdbcType=INTEGER}, #{refund,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzj.entity.TAchieveOrder" >
+    insert into T_AchieveOrder
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="achieveid != null" >
+        AchieveId,
+      </if>
+      <if test="name != null" >
+        Name,
+      </if>
+      <if test="creater != null" >
+        Creater,
+      </if>
+      <if test="buyer != null" >
+        Buyer,
+      </if>
+      <if test="buycount != null" >
+        BuyCount,
+      </if>
+      <if test="cancelreason != null" >
+        CancelReason,
+      </if>
+      <if test="canceldate != null" >
+        CanCelDate,
+      </if>
+      <if test="unitprice != null" >
+        UnitPrice,
+      </if>
+      <if test="totalprice != null" >
+        TotalPrice,
+      </if>
+      <if test="transfertype != null" >
+        TransferType,
+      </if>
+      <if test="buyday != null" >
+        BuyDay,
+      </if>
+      <if test="payday != null" >
+        PayDay,
+      </if>
+      <if test="issent != null" >
+        IsSent,
+      </if>
+      <if test="sendday != null" >
+        SendDay,
+      </if>
+      <if test="isloan != null" >
+        IsLoan,
+      </if>
+      <if test="loanday != null" >
+        LoanDay,
+      </if>
+      <if test="satisfy != null" >
+        Satisfy,
+      </if>
+      <if test="state != null" >
+        State,
+      </if>
+      <if test="evalevel != null" >
+        EvaLevel,
+      </if>
+      <if test="refund != null" >
+        Refund,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="achieveid != null" >
+        #{achieveid,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=NVARCHAR},
+      </if>
+      <if test="creater != null" >
+        #{creater,jdbcType=CHAR},
+      </if>
+      <if test="buyer != null" >
+        #{buyer,jdbcType=CHAR},
+      </if>
+      <if test="buycount != null" >
+        #{buycount,jdbcType=INTEGER},
+      </if>
+      <if test="cancelreason != null" >
+        #{cancelreason,jdbcType=NVARCHAR},
+      </if>
+      <if test="canceldate != null" >
+        #{canceldate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="unitprice != null" >
+        #{unitprice,jdbcType=DECIMAL},
+      </if>
+      <if test="totalprice != null" >
+        #{totalprice,jdbcType=DECIMAL},
+      </if>
+      <if test="transfertype != null" >
+        #{transfertype,jdbcType=INTEGER},
+      </if>
+      <if test="buyday != null" >
+        #{buyday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payday != null" >
+        #{payday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="issent != null" >
+        #{issent,jdbcType=BIT},
+      </if>
+      <if test="sendday != null" >
+        #{sendday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isloan != null" >
+        #{isloan,jdbcType=BIT},
+      </if>
+      <if test="loanday != null" >
+        #{loanday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="satisfy != null" >
+        #{satisfy,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="evalevel != null" >
+        #{evalevel,jdbcType=INTEGER},
+      </if>
+      <if test="refund != null" >
+        #{refund,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

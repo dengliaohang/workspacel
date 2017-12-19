@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzj.dao.TRaceOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.zzj.entity.TRaceOrder" >
+    <id column="ExpertId" property="expertid" jdbcType="CHAR" />
+    <id column="DemandId" property="demandid" jdbcType="CHAR" />
+    <result column="Message" property="message" jdbcType="NVARCHAR" />
+    <result column="RaceTime" property="racetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ExpertId, DemandId, Message, RaceTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.zzj.entity.TRaceOrderKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_RaceOrder
+    where ExpertId = #{expertid,jdbcType=CHAR}
+      and DemandId = #{demandid,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.zzj.entity.TRaceOrderKey" >
+    delete from T_RaceOrder
+    where ExpertId = #{expertid,jdbcType=CHAR}
+      and DemandId = #{demandid,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zzj.entity.TRaceOrder" >
+    insert into T_RaceOrder (ExpertId, DemandId, Message, 
+      RaceTime)
+    values (#{expertid,jdbcType=CHAR}, #{demandid,jdbcType=CHAR}, #{message,jdbcType=NVARCHAR}, 
+      #{racetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzj.entity.TRaceOrder" >
+    insert into T_RaceOrder
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="expertid != null" >
+        ExpertId,
+      </if>
+      <if test="demandid != null" >
+        DemandId,
+      </if>
+      <if test="message != null" >
+        Message,
+      </if>
+      <if test="racetime != null" >
+        RaceTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="expertid != null" >
+        #{expertid,jdbcType=CHAR},
+      </if>
+      <if test="demandid != null" >
+        #{demandid,jdbcType=CHAR},
+      </if>
+      <if test="message != null" >
+        #{message,jdbcType=NVARCHAR},
+      </if>
+      <if test="racetime != null" >
+        #{racetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzj.entity.TRaceOrder" >
+    update T_RaceOrder
+    <set >
+      <if test="message != null" >
+        Message = #{message,jdbcType=NVARCHAR},
+      </if>
+      <if test="racetime != null" >
+        RaceTime = #{racetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ExpertId = #{expertid,jdbcType=CHAR}
+      and DemandId = #{demandid,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zzj.entity.TRaceOrder" >
+    update T_RaceOrder
+    set Message = #{message,jdbcType=NVARCHAR},
+      RaceTime = #{racetime,jdbcType=TIMESTAMP}
+    where ExpertId = #{expertid,jdbcType=CHAR}
+      and DemandId = #{demandid,jdbcType=CHAR}
+  </update>
+</mapper>

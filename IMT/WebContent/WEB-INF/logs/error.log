@@ -1,0 +1,40 @@
+2017-07-28 14:20:25 [ ContainerBackgroundProcessor[StandardEngine[Catalina]]:339 ] - [ ERROR ] maxIdle is deprecated
+2017-07-28 14:20:29 [ localhost-startStop-1:463 ] - [ ERROR ] maxIdle is deprecated
+2017-07-28 14:27:32 [ localhost-startStop-1:475 ] - [ ERROR ] maxIdle is deprecated
+2017-07-28 14:30:24 [ ContainerBackgroundProcessor[StandardEngine[Catalina]]:348 ] - [ ERROR ] maxIdle is deprecated
+2017-07-28 14:32:06 [ localhost-startStop-1:429 ] - [ ERROR ] maxIdle is deprecated
+2017-07-28 14:36:08 [ ContainerBackgroundProcessor[StandardEngine[Catalina]]:348 ] - [ ERROR ] maxIdle is deprecated
+2017-07-28 14:36:12 [ localhost-startStop-1:487 ] - [ ERROR ] maxIdle is deprecated
+2017-07-28 14:38:16 [ localhost-startStop-1:415 ] - [ ERROR ] maxIdle is deprecated
+2017-07-28 14:46:29 [ localhost-startStop-1:468 ] - [ ERROR ] maxIdle is deprecated
+2017-07-28 14:49:22 [ localhost-startStop-1:495 ] - [ ERROR ] maxIdle is deprecated
+2017-07-28 15:27:08 [ ContainerBackgroundProcessor[StandardEngine[Catalina]]:332 ] - [ ERROR ] maxIdle is deprecated
+2017-07-28 15:28:30 [ ContainerBackgroundProcessor[StandardEngine[Catalina]]:379 ] - [ ERROR ] maxIdle is deprecated
+2017-07-28 15:29:02 [ ContainerBackgroundProcessor[StandardEngine[Catalina]]:349 ] - [ ERROR ] maxIdle is deprecated
+2017-07-28 15:29:14 [ ContainerBackgroundProcessor[StandardEngine[Catalina]]:417 ] - [ ERROR ] maxIdle is deprecated
+2017-07-28 15:30:06 [ ContainerBackgroundProcessor[StandardEngine[Catalina]]:359 ] - [ ERROR ] maxIdle is deprecated
+2017-07-28 15:32:49 [ ContainerBackgroundProcessor[StandardEngine[Catalina]]:463 ] - [ ERROR ] maxIdle is deprecated
+2017-07-28 15:34:12 [ localhost-startStop-1:454 ] - [ ERROR ] maxIdle is deprecated
+2017-07-28 15:36:24 [ ContainerBackgroundProcessor[StandardEngine[Catalina]]:380 ] - [ ERROR ] maxIdle is deprecated
+2017-07-28 15:37:12 [ localhost-startStop-1:466 ] - [ ERROR ] maxIdle is deprecated
+2017-07-28 15:39:37 [ ContainerBackgroundProcessor[StandardEngine[Catalina]]:354 ] - [ ERROR ] maxIdle is deprecated
+2017-07-28 15:39:43 [ localhost-startStop-1:417 ] - [ ERROR ] maxIdle is deprecated
+2017-07-28 15:40:15 [ ContainerBackgroundProcessor[StandardEngine[Catalina]]:431 ] - [ ERROR ] maxIdle is deprecated
+2017-07-28 15:42:08 [ ContainerBackgroundProcessor[StandardEngine[Catalina]]:419 ] - [ ERROR ] maxIdle is deprecated
+2017-07-28 15:42:20 [ ContainerBackgroundProcessor[StandardEngine[Catalina]]:388 ] - [ ERROR ] maxIdle is deprecated
+2017-07-28 15:42:47 [ localhost-startStop-1:496 ] - [ ERROR ] maxIdle is deprecated
+2017-07-28 15:43:20 [ ContainerBackgroundProcessor[StandardEngine[Catalina]]:389 ] - [ ERROR ] maxIdle is deprecated
+Closing WebApplicationContext for namespace 'spring-servlet': startup date [Fri Jul 28 15:43:20 CST 2017]; parent: Root WebApplicationContext
+Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@825817: defining beans [patientController,sysLoginController,sysMenuManageController,sysPageController,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,jacksonMessageConverter,viewResolver,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@1c6db01
+Closing Root WebApplicationContext: startup date [Fri Jul 28 15:43:20 CST 2017]; root of context hierarchy
+Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@1c6db01: defining beans [org.springframework.context.support.PropertySourcesPlaceholderConfigurer#0,patientServiceImpl,sysUserServiceImpl,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,dataSource,sqlSessionFactory,org.mybatis.spring.mapper.MapperScannerConfigurer#0,transactionManager,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor,patientDao,sysUserDao]; root of factory hierarchy
+{dataSource-1} closed
+maxIdle is deprecated
+maxIdle is deprecated
+maxIdle is deprecated
+maxIdle is deprecated
+maxIdle is deprecated
+maxIdle is deprecated
+maxIdle is deprecated
+maxIdle is deprecated
+maxIdle is deprecated

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>region.html</title>
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="jquery/jquery-1.12.4.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+  </head>
+  
+  <script type="text/javascript">
+  	var firstCodes={
+  		    "zoneCode":1,
+  			"classId":1
+  		};
+  		var secondCodes={
+  				"regionId":11
+  		}
+  	 	function firstRegion(a){
+  				firstCodes={
+  				     "zoneCode":$(a).val(),
+  				     "classId":1
+  				}
+  				secondQuery(firstCodes);
+  	}
+  	function secondRegion(a){
+  			secondCodes={
+  				"regionId":$(a).val().substr(0,2)
+  			}
+  			thirdQuery(secondCodes);
+  	}	
+  			
+  	function serchforRegion(a){
+  	
+  	}
+  		firstQuery();
+  		function firstQuery(){
+  	  		$.get("region/selectAllFirstDRegion",
+  				function(data){
+  				//var ja=JSON.parse(data);
+  			
+  				/* var eve=[];
+  					$(data).each(function(i,val){
+  						alert(val.name);
+  						eve.push({
+  						name:val.name
+  						})
+  					}) */
+  					/* var keyList = eval(data); 
+  					alert(keyList[0].name);*/
+  				 ///var json=JSON.parse(data.list); 
+  					var da=data.list;
+  					for(var i=0;i<data.list.length;i++){
+  					/* 	if(i==0){
+  							$("#sone").append('<option  onclick="firstRegion(this)"  selected = "selected"   value="' + da[i].zoneCode + '">' + da[i].zone + '</option>');
+  						} */
+  						$("#sone").append('<option   value="' + da[i].zonecode + '"   onchange="firstRegion(this)">'  + da[i].zone + '</option>');
+  					} 
+  			
+  					/*  for(var i in json) 
+					{ 
+						alert(json[i].name);
+					}  */
+  					});
+  			}
+  		
+  			function secondQuery(fristCodes){
+  				$.get("region/selectAllDRegionByFirstCode",
+  					firstCodes,
+  					function(data){
+  					var da=data.list;
+  					var obj=document.getElementById("stwo");
+       				obj.options.length=0;
+  					for(var i=0;i<data.list.length;i++){
+  						$("#stwo").append('<option   value="' + da[i].regionid + '">' + da[i].name + '</option>');
+  					} 
+  				})
+  			}
+  			
+  			function thirdQuery(secondCodes){
+  				$.get("region/selectAllDRegionBySecondCode",
+  					secondCodes,
+  					function(data){
+  					var da=data.list;
+  					var obj=document.getElementById("sthree");
+       				obj.options.length=0;
+  					for(var i=0;i<data.list.length;i++){
+  						$("#sthree").append('<option   value="' + da[i].regionId + '">' + da[i].name + '</option>');
+  					} 
+  				})
+  			}
+  			
+  		function insert(){
+  			var code=$('input[name="code"]').val();
+  			var department=$('input[name="department"]').val();
+  			var creater=$('input[name="creater"]').val();
+  			var keyWord=$('input[name="keyWord"]').val();
+  			var titleId=$('input[name="titleId"]').val();
+  			var merchandise={
+  			"mer":[{
+  				"id":0,
+  				"code":code,
+  				"department":department,
+  				"creater":creater,
+  				"keyWord":keyWord,
+  				"finishFay":new Date(),
+  				"areaId":titleId,
+  				"regionId":$('#sthree option:selected') .val(),
+  				"name":"aa",
+  				"description":"aa",
+  				"image":"aa",
+  				"maturity":"aa",
+  				"transferType":1,
+  				"publishId":"2",
+  				"price":"5.23",
+  				"isBargain":"1",
+  				"stock":"1",
+  				"count":"2",
+  				"visit":"2",
+  				"state":"2",
+  				"payType":"2",
+  				"lastDay":new Date(),
+  				"isSpecial":"1",
+  				"expertId":"2",
+  				"serviceType":"2",
+  				"merchandiseType":"2"}]
+  			};
+  			var mer=JSON.stringify(merchandise);
+  			alert(mer),
+  		/* 	$.post("merchandise/insert",
+				mer,  			
+  				function(data){
+  					var statu=data.code;
+  					if(statu=="000001"){
+  						alert("success");
+  					}else{
+  						alert("error");
+  					}
+  			});
+  			 */
+  			
+  			
+  			$.ajax( {  
+	                    type : "post",  
+	                    url : 'merchandise/insert', //要自行删除的action  
+	                    data:/* {
+  							"id":"0",
+  							"code":"code",
+  							"department":department,
+  							"creater":creater,
+  							"keyWord":keyWord,
+  							"finishFay":new Date(),
+  							"areaId":titleId,
+  							"regionId":$('#sthree option:selected') .val(),
+  							"name":"aa",
+  							"description":"aa",
+  							"image":"aa",
+  							"maturity":"aa",
+  							"transferType":1,
+  							"publishId":"2",
+  							"price":"5.23",
+  							"isBargain":"1",
+  							"stock":"1",
+  							"count":"2",
+  							"visit":"2",
+  							"state":"2",
+  							"payType":"2",
+  							"lastDay":new Date(),
+  							"isSpecial":"1",
+  							"expertId":"2",
+  							"serviceType":"2",
+  							"merchandiseType":"2"
+  			}, */
+  			
+	                    dataType : 'TEXT',  
+	                    success : function(data) {  
+	                        alert("删除成功");  
+	                    },
+	                });  
+  		}
+  </script>
+  <body>
+  
+    一级地名:<select id="sone" onchange="firstRegion(this)">
+    	</select>
+    二级地名：<select id="stwo" onchange="secondRegion(this)">
+    	</select>
+    三级地名:<select id="sthree"  onchange="serchforRegion(this)">
+    	</select >
+    	<form  id="form1"  action="" method="post">
+    	<input type="text" name="code">
+    	<input type="text" name=department >
+    	<input type="text" name="creater">
+    	<input type="text" name="keyWord" value="bamamam">
+    	<input type="text" name="titleId" value="012">
+    	<input type="text" name="regionId">
+    	<button id="inserts" onclick="insert()">插入</button>
+    	</form>
+  </body>
+</html>

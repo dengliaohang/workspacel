@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzj.dao.TAccountMapper" >
+  <resultMap id="BaseResultMap" type="com.zzj.entity.TAccount" >
+    <id column="accountID" property="accountid" jdbcType="INTEGER" />
+    <result column="Balance" property="balance" jdbcType="INTEGER" />
+    <result column="isFrozen" property="isfrozen" jdbcType="INTEGER" />
+    <result column="lastTime" property="lasttime" jdbcType="TIMESTAMP" />
+    <result column="dailyLimit" property="dailylimit" jdbcType="INTEGER" />
+    <result column="payCode" property="paycode" jdbcType="CHAR" />
+    <result column="payAccount" property="payaccount" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    accountID, Balance, isFrozen, lastTime, dailyLimit, payCode, payAccount
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_account
+    where accountID = #{accountid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_account
+    where accountID = #{accountid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zzj.entity.TAccount" >
+    insert into t_account (accountID, Balance, isFrozen, 
+      lastTime, dailyLimit, payCode, 
+      payAccount)
+    values (#{accountid,jdbcType=INTEGER}, #{balance,jdbcType=INTEGER}, #{isfrozen,jdbcType=INTEGER}, 
+      #{lasttime,jdbcType=TIMESTAMP}, #{dailylimit,jdbcType=INTEGER}, #{paycode,jdbcType=CHAR}, 
+      #{payaccount,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzj.entity.TAccount" >
+    insert into t_account
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="accountid != null" >
+        accountID,
+      </if>
+      <if test="balance != null" >
+        Balance,
+      </if>
+      <if test="isfrozen != null" >
+        isFrozen,
+      </if>
+      <if test="lasttime != null" >
+        lastTime,
+      </if>
+      <if test="dailylimit != null" >
+        dailyLimit,
+      </if>
+      <if test="paycode != null" >
+        payCode,
+      </if>
+      <if test="payaccount != null" >
+        payAccount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="accountid != null" >
+        #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="balance != null" >
+        #{balance,jdbcType=INTEGER},
+      </if>
+      <if test="isfrozen != null" >
+        #{isfrozen,jdbcType=INTEGER},
+      </if>
+      <if test="lasttime != null" >
+        #{lasttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dailylimit != null" >
+        #{dailylimit,jdbcType=INTEGER},
+      </if>
+      <if test="paycode != null" >
+        #{paycode,jdbcType=CHAR},
+      </if>
+      <if test="payaccount != null" >
+        #{payaccount,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzj.entity.TAccount" >
+    update t_account
+    <set >
+      <if test="balance != null" >
+        Balance = #{balance,jdbcType=INTEGER},
+      </if>
+      <if test="isfrozen != null" >
+        isFrozen = #{isfrozen,jdbcType=INTEGER},
+      </if>
+      <if test="lasttime != null" >
+        lastTime = #{lasttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dailylimit != null" >
+        dailyLimit = #{dailylimit,jdbcType=INTEGER},
+      </if>
+      <if test="paycode != null" >
+        payCode = #{paycode,jdbcType=CHAR},
+      </if>
+      <if test="payaccount != null" >
+        payAccount = #{payaccount,jdbcType=CHAR},
+      </if>
+    </set>
+    where accountID = #{accountid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zzj.entity.TAccount" >
+    update t_account
+    set Balance = #{balance,jdbcType=INTEGER},
+      isFrozen = #{isfrozen,jdbcType=INTEGER},
+      lastTime = #{lasttime,jdbcType=TIMESTAMP},
+      dailyLimit = #{dailylimit,jdbcType=INTEGER},
+      payCode = #{paycode,jdbcType=CHAR},
+      payAccount = #{payaccount,jdbcType=CHAR}
+    where accountID = #{accountid,jdbcType=INTEGER}
+  </update>
+</mapper>

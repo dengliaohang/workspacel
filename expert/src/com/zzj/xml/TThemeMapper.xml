@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzj.dao.TThemeMapper" >
+  <resultMap id="BaseResultMap" type="com.zzj.entity.TTheme" >
+    <result column="Id" property="id" jdbcType="CHAR" />
+    <result column="Name" property="name" jdbcType="NVARCHAR" />
+    <result column="Image" property="image" jdbcType="NVARCHAR" />
+    <result column="Title" property="title" jdbcType="NVARCHAR" />
+    <result column="Sex" property="sex" jdbcType="NCHAR" />
+    <result column="DockGroup" property="dockgroup" jdbcType="VARCHAR" />
+    <result column="TransType" property="transtype" jdbcType="INTEGER" />
+    <result column="Phone" property="phone" jdbcType="CHAR" />
+    <result column="Email" property="email" jdbcType="VARCHAR" />
+    <result column="Adress" property="adress" jdbcType="NVARCHAR" />
+    <result column="WorkPlace" property="workplace" jdbcType="NVARCHAR" />
+    <result column="IsStay" property="isstay" jdbcType="BIT" />
+    <result column="IsExpert" property="isexpert" jdbcType="INTEGER" />
+    <result column="PubTime" property="pubtime" jdbcType="TIMESTAMP" />
+    <result column="Message" property="message" jdbcType="NVARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.zzj.entity.TTheme" >
+    insert into T_theme (Id, Name, Image, 
+      Title, Sex, DockGroup, 
+      TransType, Phone, Email, 
+      Adress, WorkPlace, IsStay, 
+      IsExpert, PubTime, Message
+      )
+    values (#{id,jdbcType=CHAR}, #{name,jdbcType=NVARCHAR}, #{image,jdbcType=NVARCHAR}, 
+      #{title,jdbcType=NVARCHAR}, #{sex,jdbcType=NCHAR}, #{dockgroup,jdbcType=VARCHAR}, 
+      #{transtype,jdbcType=INTEGER}, #{phone,jdbcType=CHAR}, #{email,jdbcType=VARCHAR}, 
+      #{adress,jdbcType=NVARCHAR}, #{workplace,jdbcType=NVARCHAR}, #{isstay,jdbcType=BIT}, 
+      #{isexpert,jdbcType=INTEGER}, #{pubtime,jdbcType=TIMESTAMP}, #{message,jdbcType=NVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzj.entity.TTheme" >
+    insert into T_theme
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="name != null" >
+        Name,
+      </if>
+      <if test="image != null" >
+        Image,
+      </if>
+      <if test="title != null" >
+        Title,
+      </if>
+      <if test="sex != null" >
+        Sex,
+      </if>
+      <if test="dockgroup != null" >
+        DockGroup,
+      </if>
+      <if test="transtype != null" >
+        TransType,
+      </if>
+      <if test="phone != null" >
+        Phone,
+      </if>
+      <if test="email != null" >
+        Email,
+      </if>
+      <if test="adress != null" >
+        Adress,
+      </if>
+      <if test="workplace != null" >
+        WorkPlace,
+      </if>
+      <if test="isstay != null" >
+        IsStay,
+      </if>
+      <if test="isexpert != null" >
+        IsExpert,
+      </if>
+      <if test="pubtime != null" >
+        PubTime,
+      </if>
+      <if test="message != null" >
+        Message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=NVARCHAR},
+      </if>
+      <if test="image != null" >
+        #{image,jdbcType=NVARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=NVARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=NCHAR},
+      </if>
+      <if test="dockgroup != null" >
+        #{dockgroup,jdbcType=VARCHAR},
+      </if>
+      <if test="transtype != null" >
+        #{transtype,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=CHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="adress != null" >
+        #{adress,jdbcType=NVARCHAR},
+      </if>
+      <if test="workplace != null" >
+        #{workplace,jdbcType=NVARCHAR},
+      </if>
+      <if test="isstay != null" >
+        #{isstay,jdbcType=BIT},
+      </if>
+      <if test="isexpert != null" >
+        #{isexpert,jdbcType=INTEGER},
+      </if>
+      <if test="pubtime != null" >
+        #{pubtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="message != null" >
+        #{message,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

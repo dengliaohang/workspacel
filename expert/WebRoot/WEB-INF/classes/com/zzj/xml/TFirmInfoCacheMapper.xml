@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzj.dao.TFirmInfoCacheMapper" >
+  <resultMap id="BaseResultMap" type="com.zzj.entity.TFirmInfoCache" >
+    <id column="Id" property="id" jdbcType="CHAR" />
+    <result column="Image" property="image" jdbcType="VARCHAR" />
+    <result column="UserName" property="username" jdbcType="NVARCHAR" />
+    <result column="FirmName" property="firmname" jdbcType="NVARCHAR" />
+    <result column="RegionId" property="regionid" jdbcType="VARCHAR" />
+    <result column="AreaId" property="areaid" jdbcType="VARCHAR" />
+    <result column="Honor" property="honor" jdbcType="NVARCHAR" />
+    <result column="Description" property="description" jdbcType="LONGNVARCHAR" />
+    <result column="Business" property="business" jdbcType="LONGNVARCHAR" />
+    <result column="State" property="state" jdbcType="INTEGER" />
+    <result column="Identifier" property="identifier" jdbcType="INTEGER" />
+    <result column="IsIdent" property="isident" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, Image, UserName, FirmName, RegionId, AreaId, Honor, Description, Business, State, 
+    Identifier, IsIdent
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_FirmInfoCache
+    where Id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from T_FirmInfoCache
+    where Id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zzj.entity.TFirmInfoCache" >
+    insert into T_FirmInfoCache (Id, Image, UserName, 
+      FirmName, RegionId, AreaId, 
+      Honor, Description, Business, 
+      State, Identifier, IsIdent
+      )
+    values (#{id,jdbcType=CHAR}, #{image,jdbcType=VARCHAR}, #{username,jdbcType=NVARCHAR}, 
+      #{firmname,jdbcType=NVARCHAR}, #{regionid,jdbcType=VARCHAR}, #{areaid,jdbcType=VARCHAR}, 
+      #{honor,jdbcType=NVARCHAR}, #{description,jdbcType=LONGNVARCHAR}, #{business,jdbcType=LONGNVARCHAR}, 
+      #{state,jdbcType=INTEGER}, #{identifier,jdbcType=INTEGER}, #{isident,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzj.entity.TFirmInfoCache" >
+    insert into T_FirmInfoCache
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="image != null" >
+        Image,
+      </if>
+      <if test="username != null" >
+        UserName,
+      </if>
+      <if test="firmname != null" >
+        FirmName,
+      </if>
+      <if test="regionid != null" >
+        RegionId,
+      </if>
+      <if test="areaid != null" >
+        AreaId,
+      </if>
+      <if test="honor != null" >
+        Honor,
+      </if>
+      <if test="description != null" >
+        Description,
+      </if>
+      <if test="business != null" >
+        Business,
+      </if>
+      <if test="state != null" >
+        State,
+      </if>
+      <if test="identifier != null" >
+        Identifier,
+      </if>
+      <if test="isident != null" >
+        IsIdent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="image != null" >
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=NVARCHAR},
+      </if>
+      <if test="firmname != null" >
+        #{firmname,jdbcType=NVARCHAR},
+      </if>
+      <if test="regionid != null" >
+        #{regionid,jdbcType=VARCHAR},
+      </if>
+      <if test="areaid != null" >
+        #{areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="honor != null" >
+        #{honor,jdbcType=NVARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="business != null" >
+        #{business,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="identifier != null" >
+        #{identifier,jdbcType=INTEGER},
+      </if>
+      <if test="isident != null" >
+        #{isident,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzj.entity.TFirmInfoCache" >
+    update T_FirmInfoCache
+    <set >
+      <if test="image != null" >
+        Image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        UserName = #{username,jdbcType=NVARCHAR},
+      </if>
+      <if test="firmname != null" >
+        FirmName = #{firmname,jdbcType=NVARCHAR},
+      </if>
+      <if test="regionid != null" >
+        RegionId = #{regionid,jdbcType=VARCHAR},
+      </if>
+      <if test="areaid != null" >
+        AreaId = #{areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="honor != null" >
+        Honor = #{honor,jdbcType=NVARCHAR},
+      </if>
+      <if test="description != null" >
+        Description = #{description,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="business != null" >
+        Business = #{business,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="state != null" >
+        State = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="identifier != null" >
+        Identifier = #{identifier,jdbcType=INTEGER},
+      </if>
+      <if test="isident != null" >
+        IsIdent = #{isident,jdbcType=BIT},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zzj.entity.TFirmInfoCache" >
+    update T_FirmInfoCache
+    set Image = #{image,jdbcType=VARCHAR},
+      UserName = #{username,jdbcType=NVARCHAR},
+      FirmName = #{firmname,jdbcType=NVARCHAR},
+      RegionId = #{regionid,jdbcType=VARCHAR},
+      AreaId = #{areaid,jdbcType=VARCHAR},
+      Honor = #{honor,jdbcType=NVARCHAR},
+      Description = #{description,jdbcType=LONGNVARCHAR},
+      Business = #{business,jdbcType=LONGNVARCHAR},
+      State = #{state,jdbcType=INTEGER},
+      Identifier = #{identifier,jdbcType=INTEGER},
+      IsIdent = #{isident,jdbcType=BIT}
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

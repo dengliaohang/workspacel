@@ -1,0 +1,19 @@
+package com.zzj.dao;
+
+import com.zzj.entity.Merchandise;
+
+public interface MerchandiseMapper {
+    public int deleteByPrimaryKey(Integer id)throws Exception;
+
+    public int insert(Merchandise record)throws Exception;
+
+    public int insertSelective(Merchandise record)throws Exception;
+
+    public  Merchandise selectByPrimaryKey(Integer id)throws Exception;
+
+    public int updateByPrimaryKeySelective(Merchandise record)throws Exception;
+
+    public int updateByPrimaryKeyWithBLOBs(Merchandise record)throws Exception;
+
+    public int updateByPrimaryKey(Merchandise record)throws Exception;
+}

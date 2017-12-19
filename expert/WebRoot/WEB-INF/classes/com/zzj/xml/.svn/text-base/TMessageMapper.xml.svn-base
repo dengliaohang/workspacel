@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzj.dao.TMessageMapper" >
+  <resultMap id="BaseResultMap" type="com.zzj.entity.TMessage" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="publishId" property="publishid" jdbcType="INTEGER" />
+    <result column="receiveId" property="receiveid" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="publishTime" property="publishtime" jdbcType="TIMESTAMP" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="idRead" property="idread" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.zzj.entity.TMessage" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, publishId, receiveId, title, publishTime, type, idRead
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_message
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_message
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zzj.entity.TMessage" >
+    insert into t_message (id, publishId, receiveId, 
+      title, publishTime, type, 
+      idRead, content)
+    values (#{id,jdbcType=INTEGER}, #{publishid,jdbcType=INTEGER}, #{receiveid,jdbcType=INTEGER}, 
+      #{title,jdbcType=VARCHAR}, #{publishtime,jdbcType=TIMESTAMP}, #{type,jdbcType=INTEGER}, 
+      #{idread,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzj.entity.TMessage" >
+    insert into t_message
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="publishid != null" >
+        publishId,
+      </if>
+      <if test="receiveid != null" >
+        receiveId,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="publishtime != null" >
+        publishTime,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="idread != null" >
+        idRead,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="publishid != null" >
+        #{publishid,jdbcType=INTEGER},
+      </if>
+      <if test="receiveid != null" >
+        #{receiveid,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="publishtime != null" >
+        #{publishtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="idread != null" >
+        #{idread,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzj.entity.TMessage" >
+    update t_message
+    <set >
+      <if test="publishid != null" >
+        publishId = #{publishid,jdbcType=INTEGER},
+      </if>
+      <if test="receiveid != null" >
+        receiveId = #{receiveid,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="publishtime != null" >
+        publishTime = #{publishtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="idread != null" >
+        idRead = #{idread,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zzj.entity.TMessage" >
+    update t_message
+    set publishId = #{publishid,jdbcType=INTEGER},
+      receiveId = #{receiveid,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      publishTime = #{publishtime,jdbcType=TIMESTAMP},
+      type = #{type,jdbcType=INTEGER},
+      idRead = #{idread,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zzj.entity.TMessage" >
+    update t_message
+    set publishId = #{publishid,jdbcType=INTEGER},
+      receiveId = #{receiveid,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      publishTime = #{publishtime,jdbcType=TIMESTAMP},
+      type = #{type,jdbcType=INTEGER},
+      idRead = #{idread,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

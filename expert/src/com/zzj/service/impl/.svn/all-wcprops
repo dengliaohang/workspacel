@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/MyRepository/!svn/ver/24/expert/src/com/zzj/service/impl
+END
+FriendsServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/MyRepository/!svn/ver/14/expert/src/com/zzj/service/impl/FriendsServiceImpl.java
+END
+TNewsServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/MyRepository/!svn/ver/13/expert/src/com/zzj/service/impl/TNewsServiceImpl.java
+END
+TConsultServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/MyRepository/!svn/ver/14/expert/src/com/zzj/service/impl/TConsultServiceImpl.java
+END
+DRegionServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/MyRepository/!svn/ver/14/expert/src/com/zzj/service/impl/DRegionServiceImpl.java
+END
+WebSetupServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/MyRepository/!svn/ver/11/expert/src/com/zzj/service/impl/WebSetupServiceImpl.java
+END
+TFeedBackServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/MyRepository/!svn/ver/13/expert/src/com/zzj/service/impl/TFeedBackServiceImpl.java
+END
+TPersonServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/MyRepository/!svn/ver/24/expert/src/com/zzj/service/impl/TPersonServiceImpl.java
+END
+TOrderServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/MyRepository/!svn/ver/11/expert/src/com/zzj/service/impl/TOrderServiceImpl.java
+END
+TCommentServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/MyRepository/!svn/ver/14/expert/src/com/zzj/service/impl/TCommentServiceImpl.java
+END
+PayLogServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/MyRepository/!svn/ver/14/expert/src/com/zzj/service/impl/PayLogServiceImpl.java
+END
+DAreaServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/MyRepository/!svn/ver/14/expert/src/com/zzj/service/impl/DAreaServiceImpl.java
+END
+HistoryMessageServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/MyRepository/!svn/ver/14/expert/src/com/zzj/service/impl/HistoryMessageServiceImpl.java
+END
+TMessageServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/MyRepository/!svn/ver/13/expert/src/com/zzj/service/impl/TMessageServiceImpl.java
+END

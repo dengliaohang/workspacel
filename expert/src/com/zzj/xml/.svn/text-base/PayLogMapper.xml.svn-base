@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzj.dao.PayLogMapper" >
+  <resultMap id="BaseResultMap" type="com.zzj.entity.PayLog" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="acct" property="acct" jdbcType="VARCHAR" />
+    <result column="orderId" property="orderid" jdbcType="VARCHAR" />
+    <result column="reqsn" property="reqsn" jdbcType="VARCHAR" />
+    <result column="trxcode" property="trxcode" jdbcType="VARCHAR" />
+    <result column="oldtrxid" property="oldtrxid" jdbcType="VARCHAR" />
+    <result column="trxid" property="trxid" jdbcType="VARCHAR" />
+    <result column="chnltrxid" property="chnltrxid" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="date" property="date" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, acct, orderId, reqsn, trxcode, oldtrxid, trxid, chnltrxid, status, date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from paylog
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from paylog
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zzj.entity.PayLog" >
+    insert into paylog (id, acct, orderId, 
+      reqsn, trxcode, oldtrxid, 
+      trxid, chnltrxid, status, 
+      date)
+    values (#{id,jdbcType=INTEGER}, #{acct,jdbcType=VARCHAR}, #{orderid,jdbcType=VARCHAR}, 
+      #{reqsn,jdbcType=VARCHAR}, #{trxcode,jdbcType=VARCHAR}, #{oldtrxid,jdbcType=VARCHAR}, 
+      #{trxid,jdbcType=VARCHAR}, #{chnltrxid,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{date,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzj.entity.PayLog" >
+    insert into paylog
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="acct != null" >
+        acct,
+      </if>
+      <if test="orderid != null" >
+        orderId,
+      </if>
+      <if test="reqsn != null" >
+        reqsn,
+      </if>
+      <if test="trxcode != null" >
+        trxcode,
+      </if>
+      <if test="oldtrxid != null" >
+        oldtrxid,
+      </if>
+      <if test="trxid != null" >
+        trxid,
+      </if>
+      <if test="chnltrxid != null" >
+        chnltrxid,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="acct != null" >
+        #{acct,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null" >
+        #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="reqsn != null" >
+        #{reqsn,jdbcType=VARCHAR},
+      </if>
+      <if test="trxcode != null" >
+        #{trxcode,jdbcType=VARCHAR},
+      </if>
+      <if test="oldtrxid != null" >
+        #{oldtrxid,jdbcType=VARCHAR},
+      </if>
+      <if test="trxid != null" >
+        #{trxid,jdbcType=VARCHAR},
+      </if>
+      <if test="chnltrxid != null" >
+        #{chnltrxid,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzj.entity.PayLog" >
+    update paylog
+    <set >
+      <if test="acct != null" >
+        acct = #{acct,jdbcType=VARCHAR},
+      </if>
+      <if test="orderid != null" >
+        orderId = #{orderid,jdbcType=VARCHAR},
+      </if>
+      <if test="reqsn != null" >
+        reqsn = #{reqsn,jdbcType=VARCHAR},
+      </if>
+      <if test="trxcode != null" >
+        trxcode = #{trxcode,jdbcType=VARCHAR},
+      </if>
+      <if test="oldtrxid != null" >
+        oldtrxid = #{oldtrxid,jdbcType=VARCHAR},
+      </if>
+      <if test="trxid != null" >
+        trxid = #{trxid,jdbcType=VARCHAR},
+      </if>
+      <if test="chnltrxid != null" >
+        chnltrxid = #{chnltrxid,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        date = #{date,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zzj.entity.PayLog" >
+    update paylog
+    set acct = #{acct,jdbcType=VARCHAR},
+      orderId = #{orderid,jdbcType=VARCHAR},
+      reqsn = #{reqsn,jdbcType=VARCHAR},
+      trxcode = #{trxcode,jdbcType=VARCHAR},
+      oldtrxid = #{oldtrxid,jdbcType=VARCHAR},
+      trxid = #{trxid,jdbcType=VARCHAR},
+      chnltrxid = #{chnltrxid,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      date = #{date,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

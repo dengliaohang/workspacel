@@ -1,0 +1,107 @@
+package com.imt.pat.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.imt.pat.dao.PatientDao;
+import com.imt.pat.entity.PageLimit;
+import com.imt.pat.entity.patientEntity;
+import com.imt.pat.service.PatientService;
+@Service
+public class PatientServiceImpl implements PatientService{
+		@Autowired
+		PatientDao patientDao;
+			//增加患者
+		public int addPatient(patientEntity patientEntity){
+			return patientDao.addPatient(patientEntity);
+		}
+		//查询所有患者
+		@Override
+		public List<patientEntity> queryAllPatient( PageLimit pageLimit) {
+			// TODO Auto-generated method stub
+			return patientDao.queryAllPatient(pageLimit);
+		}
+		
+		//新资源30天内 新资源
+		@Override
+		public List<patientEntity> queryNewPatient(PageLimit pageLimit) {
+			// TODO Auto-generated method stub
+			return patientDao.queryNewPatient(pageLimit);
+		}
+		
+		//超过三十天的过期资源
+		@Override
+		public List<patientEntity> queryOutPatient(PageLimit pageLimit) {
+			// TODO Auto-generated method stub
+			
+			
+			
+			return patientDao.queryOutPatient( pageLimit);
+		}
+		
+		
+		
+		//查询有效资源的数量
+		@Override
+		public int queryNewPatientCount(PageLimit pageLimit) {
+			// TODO Auto-generated method stub
+			return patientDao.queryNewPatientCount( pageLimit);
+		}
+		
+		
+		
+		//查询过期资源的数量
+		@Override
+		public int queryOutPatientCount(PageLimit pageLimit) {
+			// TODO Auto-generated method stub
+			return patientDao.queryOutPatientCount(pageLimit);
+		}
+		//查询所有患者数量
+		@Override
+		public int queryAllPatientCount(patientEntity patientEntity) {
+			// TODO Auto-generated method stub
+			
+			return patientDao.queryAllPatientCount(patientEntity);
+		}
+		//查询无效资源
+		@Override
+		public List<patientEntity> queryInvalidResource(PageLimit pageLimit) {
+			// TODO Auto-generated method stub
+			return patientDao.queryInvalidResource(pageLimit);
+		}
+		//查询无效资源数量
+		@Override
+		public int queryInvalidResourceCount(PageLimit pageLimit) {
+			// TODO Auto-generated method stub
+			return patientDao.queryInvalidResourceCount(pageLimit);
+		}
+		//删除患者 （患者信息不可真删，所以修改在数据中的状态isDel=0）
+		@Override
+		public int updatePatient(int[] ids) {
+			// TODO Auto-generated method stub
+			return patientDao.updatePatient(ids);
+		}
+		//恢复已删除的患者信息
+		@Override
+		public int recoveryPatient(int[] ids) {
+			// TODO Auto-generated method stub
+			return patientDao.recoveryPatient(ids);
+		}
+		//通过id查询患者
+		@Override
+		public patientEntity queryPatientById(patientEntity p) {
+			// TODO Auto-generated method stub
+			
+			return patientDao.queryPatientById(p);
+		}
+		//修改患者信息
+		@Override
+		public int updatePatiento(patientEntity patientEntity) {
+			// TODO Auto-generated method stub
+			return patientDao.updatePatiento(patientEntity);
+		}
+	
+	
+}

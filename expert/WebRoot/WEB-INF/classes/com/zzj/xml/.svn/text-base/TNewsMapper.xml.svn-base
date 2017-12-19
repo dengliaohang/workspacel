@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzj.dao.TNewsMapper" >
+  <resultMap id="BaseResultMap" type="com.zzj.entity.TNews" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="brief" property="brief" jdbcType="VARCHAR" />
+    <result column="source" property="source" jdbcType="VARCHAR" />
+    <result column="column" property="column" jdbcType="VARCHAR" />
+    <result column="publishTime" property="publishtime" jdbcType="TIMESTAMP" />
+    <result column="addPerson" property="addperson" jdbcType="INTEGER" />
+    <result column="attachTime" property="attachtime" jdbcType="TIMESTAMP" />
+    <result column="attachTitle" property="attachtitle" jdbcType="VARCHAR" />
+    <result column="attachBrief" property="attachbrief" jdbcType="VARCHAR" />
+    <result column="path" property="path" jdbcType="VARCHAR" />
+    <result column="show" property="show" jdbcType="INTEGER" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="showImg" property="showimg" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.zzj.entity.TNews" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, title, brief, source, column, publishTime, addPerson, attachTime, attachTitle, 
+    attachBrief, path, show, sort, showImg
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_news
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_news
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zzj.entity.TNews" >
+    insert into t_news (id, title, brief, 
+      source, column, publishTime, 
+      addPerson, attachTime, attachTitle, 
+      attachBrief, path, show, 
+      sort, showImg, content
+      )
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{brief,jdbcType=VARCHAR}, 
+      #{source,jdbcType=VARCHAR}, #{column,jdbcType=VARCHAR}, #{publishtime,jdbcType=TIMESTAMP}, 
+      #{addperson,jdbcType=INTEGER}, #{attachtime,jdbcType=TIMESTAMP}, #{attachtitle,jdbcType=VARCHAR}, 
+      #{attachbrief,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}, #{show,jdbcType=INTEGER}, 
+      #{sort,jdbcType=INTEGER}, #{showimg,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzj.entity.TNews" >
+    insert into t_news
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="brief != null" >
+        brief,
+      </if>
+      <if test="source != null" >
+        source,
+      </if>
+      <if test="column != null" >
+        column,
+      </if>
+      <if test="publishtime != null" >
+        publishTime,
+      </if>
+      <if test="addperson != null" >
+        addPerson,
+      </if>
+      <if test="attachtime != null" >
+        attachTime,
+      </if>
+      <if test="attachtitle != null" >
+        attachTitle,
+      </if>
+      <if test="attachbrief != null" >
+        attachBrief,
+      </if>
+      <if test="path != null" >
+        path,
+      </if>
+      <if test="show != null" >
+        show,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="showimg != null" >
+        showImg,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="brief != null" >
+        #{brief,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null" >
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="column != null" >
+        #{column,jdbcType=VARCHAR},
+      </if>
+      <if test="publishtime != null" >
+        #{publishtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addperson != null" >
+        #{addperson,jdbcType=INTEGER},
+      </if>
+      <if test="attachtime != null" >
+        #{attachtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attachtitle != null" >
+        #{attachtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="attachbrief != null" >
+        #{attachbrief,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="show != null" >
+        #{show,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="showimg != null" >
+        #{showimg,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzj.entity.TNews" >
+    update t_news
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="brief != null" >
+        brief = #{brief,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null" >
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="column != null" >
+        column = #{column,jdbcType=VARCHAR},
+      </if>
+      <if test="publishtime != null" >
+        publishTime = #{publishtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addperson != null" >
+        addPerson = #{addperson,jdbcType=INTEGER},
+      </if>
+      <if test="attachtime != null" >
+        attachTime = #{attachtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attachtitle != null" >
+        attachTitle = #{attachtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="attachbrief != null" >
+        attachBrief = #{attachbrief,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        path = #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="show != null" >
+        show = #{show,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="showimg != null" >
+        showImg = #{showimg,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zzj.entity.TNews" >
+    update t_news
+    set title = #{title,jdbcType=VARCHAR},
+      brief = #{brief,jdbcType=VARCHAR},
+      source = #{source,jdbcType=VARCHAR},
+      column = #{column,jdbcType=VARCHAR},
+      publishTime = #{publishtime,jdbcType=TIMESTAMP},
+      addPerson = #{addperson,jdbcType=INTEGER},
+      attachTime = #{attachtime,jdbcType=TIMESTAMP},
+      attachTitle = #{attachtitle,jdbcType=VARCHAR},
+      attachBrief = #{attachbrief,jdbcType=VARCHAR},
+      path = #{path,jdbcType=VARCHAR},
+      show = #{show,jdbcType=INTEGER},
+      sort = #{sort,jdbcType=INTEGER},
+      showImg = #{showimg,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zzj.entity.TNews" >
+    update t_news
+    set title = #{title,jdbcType=VARCHAR},
+      brief = #{brief,jdbcType=VARCHAR},
+      source = #{source,jdbcType=VARCHAR},
+      column = #{column,jdbcType=VARCHAR},
+      publishTime = #{publishtime,jdbcType=TIMESTAMP},
+      addPerson = #{addperson,jdbcType=INTEGER},
+      attachTime = #{attachtime,jdbcType=TIMESTAMP},
+      attachTitle = #{attachtitle,jdbcType=VARCHAR},
+      attachBrief = #{attachbrief,jdbcType=VARCHAR},
+      path = #{path,jdbcType=VARCHAR},
+      show = #{show,jdbcType=INTEGER},
+      sort = #{sort,jdbcType=INTEGER},
+      showImg = #{showimg,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

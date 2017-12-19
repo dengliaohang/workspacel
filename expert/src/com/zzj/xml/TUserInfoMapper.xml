@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzj.dao.TUserInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.zzj.entity.TUserInfo" >
+    <id column="Id" property="id" jdbcType="CHAR" />
+    <result column="UserName" property="username" jdbcType="LONGNVARCHAR" />
+    <result column="UserGrade" property="usergrade" jdbcType="INTEGER" />
+    <result column="TaskGrade" property="taskgrade" jdbcType="INTEGER" />
+    <result column="Image" property="image" jdbcType="VARCHAR" />
+    <result column="RegionId" property="regionid" jdbcType="VARCHAR" />
+    <result column="Sign" property="sign" jdbcType="NVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, UserName, UserGrade, TaskGrade, Image, RegionId, Sign
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_UserInfo
+    where Id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from T_UserInfo
+    where Id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zzj.entity.TUserInfo" >
+    insert into T_UserInfo (Id, UserName, UserGrade, 
+      TaskGrade, Image, RegionId, 
+      Sign)
+    values (#{id,jdbcType=CHAR}, #{username,jdbcType=LONGNVARCHAR}, #{usergrade,jdbcType=INTEGER}, 
+      #{taskgrade,jdbcType=INTEGER}, #{image,jdbcType=VARCHAR}, #{regionid,jdbcType=VARCHAR}, 
+      #{sign,jdbcType=NVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzj.entity.TUserInfo" >
+    insert into T_UserInfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="username != null" >
+        UserName,
+      </if>
+      <if test="usergrade != null" >
+        UserGrade,
+      </if>
+      <if test="taskgrade != null" >
+        TaskGrade,
+      </if>
+      <if test="image != null" >
+        Image,
+      </if>
+      <if test="regionid != null" >
+        RegionId,
+      </if>
+      <if test="sign != null" >
+        Sign,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="usergrade != null" >
+        #{usergrade,jdbcType=INTEGER},
+      </if>
+      <if test="taskgrade != null" >
+        #{taskgrade,jdbcType=INTEGER},
+      </if>
+      <if test="image != null" >
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="regionid != null" >
+        #{regionid,jdbcType=VARCHAR},
+      </if>
+      <if test="sign != null" >
+        #{sign,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzj.entity.TUserInfo" >
+    update T_UserInfo
+    <set >
+      <if test="username != null" >
+        UserName = #{username,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="usergrade != null" >
+        UserGrade = #{usergrade,jdbcType=INTEGER},
+      </if>
+      <if test="taskgrade != null" >
+        TaskGrade = #{taskgrade,jdbcType=INTEGER},
+      </if>
+      <if test="image != null" >
+        Image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="regionid != null" >
+        RegionId = #{regionid,jdbcType=VARCHAR},
+      </if>
+      <if test="sign != null" >
+        Sign = #{sign,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zzj.entity.TUserInfo" >
+    update T_UserInfo
+    set UserName = #{username,jdbcType=LONGNVARCHAR},
+      UserGrade = #{usergrade,jdbcType=INTEGER},
+      TaskGrade = #{taskgrade,jdbcType=INTEGER},
+      Image = #{image,jdbcType=VARCHAR},
+      RegionId = #{regionid,jdbcType=VARCHAR},
+      Sign = #{sign,jdbcType=NVARCHAR}
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

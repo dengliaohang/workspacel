@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzj.dao.DAreaMapper" >
+  <resultMap id="BaseResultMap" type="com.zzj.entity.DArea" >
+    <id column="areaId" property="areaId" jdbcType="INTEGER" />
+    <result column="Code" property="Code" jdbcType="CHAR" />
+    <result column="FirstCode" property="firstcode" jdbcType="CHAR" />
+    <result column="SecondCode" property="secondcode" jdbcType="CHAR" />
+    <result column="Name" property="name" jdbcType="VARCHAR" />
+    <result column="Class" property="class" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+   areaId, Code, FirstCode, SecondCode, Name, Class
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from d_area
+    where Code = #{code,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from d_area
+    where Code = #{code,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zzj.entity.DArea" >
+    insert into d_area (Code, FirstCode, SecondCode, 
+      Name, Class)
+    values (#{code,jdbcType=CHAR}, #{firstcode,jdbcType=CHAR}, #{secondcode,jdbcType=CHAR}, 
+      #{name,jdbcType=VARCHAR}, #{class,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzj.entity.DArea" >
+    insert into d_area
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="code != null" >
+        Code,
+      </if>
+      <if test="firstcode != null" >
+        FirstCode,
+      </if>
+      <if test="secondcode != null" >
+        SecondCode,
+      </if>
+      <if test="name != null" >
+        Name,
+      </if>
+      <if test="class != null" >
+        Class,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="code != null" >
+        #{code,jdbcType=CHAR},
+      </if>
+      <if test="firstcode != null" >
+        #{firstcode,jdbcType=CHAR},
+      </if>
+      <if test="secondcode != null" >
+        #{secondcode,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=NVARCHAR},
+      </if>
+      <if test="class != null" >
+        #{class,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzj.entity.DArea" >
+    update D_area
+    <set >
+      <if test="firstcode != null" >
+        FirstCode = #{firstcode,jdbcType=CHAR},
+      </if>
+      <if test="secondcode != null" >
+        SecondCode = #{secondcode,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        Name = #{name,jdbcType=NVARCHAR},
+      </if>
+      <if test="class != null" >
+        Class = #{class,jdbcType=CHAR},
+      </if>
+    </set>
+    where Code = #{code,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zzj.entity.DArea" >
+    update D_area
+    set FirstCode = #{firstcode,jdbcType=CHAR},
+      SecondCode = #{secondcode,jdbcType=CHAR},
+      Name = #{name,jdbcType=NVARCHAR},
+      Class = #{class,jdbcType=CHAR}
+    	where Code = #{code,jdbcType=CHAR}
+  </update>
+  
+  <select id="selectAllFirstDArea" resultType="com.zzj.entity.DArea" parameterType="java.lang.String">
+  		select * from  d_area where Class=#{classId}
+  </select>
+  
+  <select id="selectAllDAreaByFirstCode" resultType="com.zzj.entity.DArea" parameterType="java.lang.String">
+  		select * from  d_area where FirstCode=#{firstCode}
+  </select>
+  
+  
+  
+</mapper>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.imt.pat.dao.PatientDao">
+	<insert id="addPatient" parameterType="patient">
+		insert into patient_resource
+		values
+		(
+		#{patient_id},
+		#{sys_user_id},
+		#{patient_name},
+		#{patient_age},
+		#{patient_sex},
+		#{patient_consultation_name},
+		#{patient_consultation_country},
+		#{patient_consultation_phone},
+		#{patient_sysptom},
+		#{patient_entity},
+		#{patient_intention_level},
+		#{patient_report_state},
+		#{patient_passport_state},
+		#{remark},
+		#{patient_address},
+		#{patient_consultation_relation},
+		#{consultation_address},
+		#{consultation_email},
+		#{critical_state},
+		#{resource_state},
+		#{hospital_state},
+		#{report_date},
+		#{patient_isDel},
+		#{ue}
+		)
+	</insert>
+	<select id="queryPatientById" parameterType="patient"  resultType="com.imt.pat.entity.patientEntity">
+		select * from patient_resource where patient_id=#{patient_id}
+	</select>
+	<select id="queryAllPatient" parameterType="pLimit"  resultType="com.imt.pat.entity.patientEntity">
+		select * from patient_resource where patient_isDel=#{patient_isDel} and sys_user_id=#{sys_user_id} LIMIT #{offset},#{startlimit}
+	</select>
+	<select id="queryAllPatientCount" parameterType="patient"  resultType="java.lang.Integer">
+		select count(*) from patient_resource where patient_isDel=#{patient_isDel}
+	</select>
+	<select id="queryNewPatient" parameterType="pLimit" resultType="com.imt.pat.entity.patientEntity">
+		select * from patient_resource where report_date BETWEEN #{ldate} AND #{currdate} and patient_isDel=0 and resource_state='yes'    LIMIT #{offset},#{startlimit} 
+	</select>
+	<!-- 查询 这个时间段的有效资源数量 -->
+	<select id="queryNewPatientCount" parameterType="pLimit" resultType="java.lang.Integer">
+		select count(*) from patient_resource where report_date BETWEEN #{ldate} AND #{currdate} and patient_isDel=0 and resource_state='yes'
+	</select>
+	<select id="queryOutPatient" parameterType="pLimit" resultType="com.imt.pat.entity.patientEntity">
+		select * from patient_resource where report_date  BETWEEN #{ndate} AND #{ldate} and resource_state='yes' and patient_isDel=0 LIMIT #{offset},#{startlimit}
+	</select>
+	<!-- 查询这个时间段的有效资源数量 -->
+	<select id="queryOutPatientCount" parameterType="pLimit" resultType="java.lang.Integer">
+		select count(*) from patient_resource where report_date  BETWEEN #{ndate} AND #{ldate} and resource_state='yes'  
+	</select>
+	
+	<!-- 查询无效资源 -->
+	<select id="queryInvalidResource" parameterType="pLimit"  resultType="com.imt.pat.entity.patientEntity">
+		select * from patient_resource where patient_isDel=#{patient_isDel} and resource_state='no' LIMIT #{offset},#{startlimit}
+	</select>
+	
+	<!-- 查询无效资源数量 -->
+	<select id="queryInvalidResourceCount" parameterType="patient"  resultType="java.lang.Integer">
+		select count(*) from patient_resource where patient_isDel=#{patient_isDel} and resource_state='no'
+	</select>
+	
+	<update id="updatePatient" parameterType="int">
+		update  patient_resource set patient_isDel=1 where patient_id in
+        <foreach item="empItem" collection="array" open="(" separator="," close=")">
+            #{empItem}
+        </foreach>
+	</update>
+	<!-- 恢复已删除的记录 -->
+	<update id="recoveryPatient" parameterType="int">	
+			update  patient_resource set patient_isDel=0 where patient_id in
+        <foreach item="empItem" collection="array" open="(" separator="," close=")">
+            #{empItem}
+        </foreach>
+	</update>
+	<!-- 修改患者 -->
+	<update id="updatePatiento"  parameterType="patient" >	
+			update  patient_resource set patient_name=#{patient_name} ,patient_age=#{patient_age},
+			patient_sex=#{patient_sex} ,patient_consultation_name=#{patient_consultation_name},
+			patient_consultation_phone=#{patient_consultation_phone},report_date=#{report_date}
+			 where patient_id=#{patient_id}
+	</update>
+</mapper>

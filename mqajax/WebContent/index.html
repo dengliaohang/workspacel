@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="js/amq_jquery_adapter.js"></script>
+<script type="text/javascript" src="js/amq.js"></script>
+<script type="text/javascript">
+	var amq = org.activemq.Amq;
+	amq.init({
+	  uri: 'amq',
+	  logging: true,
+	  timeout: 1
+	});
+	var myHandler = function(message){
+	      $("#msgDiv").append(message);
+	      $("#msgDiv").append("<br>");
+	  }
+	amq.addListener("smeguangdong","topic://FirstTopic",myHandler);
+	
+	function send(){
+	    var nickname = $("#nickname").val();
+	    var content = $("#content").val();
+	    var msg = nickname + " : " +content;
+	    amq.sendMessage("topic://FirstTopic","<message>"+msg+"</message>");
+	}
+</script>
+</head>
+<body>
+<b>多人聊天室</b>
+<hr>
+<div style="height:300px;width:600px;border:block;overflow:auto" id="msgDiv">
+</div>
+昵称：<input type="text" id="nickname">
+内容：<input type="text" id="content">
+<button onclick="send()">发送</button>
+</body>
+</html>

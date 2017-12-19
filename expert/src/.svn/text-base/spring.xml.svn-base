@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx.xsd">
+	
+	<!--引入propertise文件  -->
+		<!--传统方式引入  -->
+<!-- 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> -->
+<!-- 		<property name="locations" value="classpath:db.properties"></property> -->
+<!-- 	</bean> -->
+	
+	<!--简化方式  -->
+	<context:property-placeholder location="classpath:db.properties"/>	
+	
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"  destroy-method="close">  
+    <property name="driverClass">  
+        <value>${datasource.driverClassName}</value>  
+    </property>  
+    <property name="jdbcUrl">  
+        <value>${datasource.url}</value>  
+    </property>  
+    <property name="user">  
+        <value>${datasource.username}</value>  
+    </property>  
+    <property name="password">  
+        <value>${datasource.password}</value>  
+    </property>  
+    <property name="acquireIncrement">  
+        <value>${c3p0.acquireIncrement}</value>  
+    </property>  
+    <property name="initialPoolSize">  
+        <value>${c3p0.initialPoolSize}</value>  
+    </property>  
+    <property name="minPoolSize">  
+        <value>${c3p0.minPoolSize}</value>  
+    </property>  
+    <property name="maxPoolSize">  
+        <value>${c3p0.maxPoolSize}</value>  
+    </property>  
+     <property name="idleConnectionTestPeriod">  
+        <value>${c3p0.idleConnectionTestPeriod}</value>  
+    </property>  
+     <property name="maxIdleTime">  
+        <value>${c3p0.maxIdleTime}</value>  
+    </property>  
+    <property name="maxStatements">  
+        <value>${c3p0.maxStatements}</value>  
+    </property>  
+    <property name="numHelperThreads">  
+        <value>${c3p0.numHelperThreads}</value>  
+    </property>  
+</bean> 
+	
+	
+	
+	<!--2.配置mybatis的SqlSession的工厂: SqlSessionFactoryBean dataSource:引用数据源 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="mapperLocations"  
+              value="classpath:com/zzj/xml/*Mapper.xml" /> 
+		<property name="typeAliasesPackage" value="com.zzj.entity" />
+	</bean>
+	
+	<!-- 3. 自动扫描mybatis映射文件和接口的包 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.zzj.dao"></property>
+	</bean>
+	
+	
+	
+	<!--4.配置事务管理器  -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<!--5.开启注解进行事务管理   transaction-manager：引用上面定义的事务管理器-->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+</beans>

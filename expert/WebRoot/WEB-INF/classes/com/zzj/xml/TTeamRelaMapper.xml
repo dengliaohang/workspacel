@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzj.dao.TTeamRelaMapper" >
+  <resultMap id="BaseResultMap" type="com.zzj.entity.TTeamRela" >
+    <result column="ExpertId" property="expertid" jdbcType="CHAR" />
+    <result column="TeamId" property="teamid" jdbcType="CHAR" />
+    <result column="TeamPost" property="teampost" jdbcType="NVARCHAR" />
+    <result column="TeamRole" property="teamrole" jdbcType="INTEGER" />
+    <result column="JoinDay" property="joinday" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <insert id="insert" parameterType="com.zzj.entity.TTeamRela" >
+    insert into T_TeamRela (ExpertId, TeamId, TeamPost, 
+      TeamRole, JoinDay)
+    values (#{expertid,jdbcType=CHAR}, #{teamid,jdbcType=CHAR}, #{teampost,jdbcType=NVARCHAR}, 
+      #{teamrole,jdbcType=INTEGER}, #{joinday,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzj.entity.TTeamRela" >
+    insert into T_TeamRela
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="expertid != null" >
+        ExpertId,
+      </if>
+      <if test="teamid != null" >
+        TeamId,
+      </if>
+      <if test="teampost != null" >
+        TeamPost,
+      </if>
+      <if test="teamrole != null" >
+        TeamRole,
+      </if>
+      <if test="joinday != null" >
+        JoinDay,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="expertid != null" >
+        #{expertid,jdbcType=CHAR},
+      </if>
+      <if test="teamid != null" >
+        #{teamid,jdbcType=CHAR},
+      </if>
+      <if test="teampost != null" >
+        #{teampost,jdbcType=NVARCHAR},
+      </if>
+      <if test="teamrole != null" >
+        #{teamrole,jdbcType=INTEGER},
+      </if>
+      <if test="joinday != null" >
+        #{joinday,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

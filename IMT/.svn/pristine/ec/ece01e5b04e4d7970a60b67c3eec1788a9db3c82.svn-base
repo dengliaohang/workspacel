@@ -1,0 +1,70 @@
+package com.imt.sys.dao;
+
+import java.util.List;
+
+import com.imt.sys.entity.PageLimit;
+import com.imt.sys.entity.SysUserEntity;
+
+public interface SysUserDao {
+	/**
+	 * 查询管理员
+	 * @param SysUserEntity 员工
+	 */
+	SysUserEntity querySysUser(SysUserEntity sysuser);
+	/*
+	 * 查询员工 byCname
+	 * */
+	SysUserEntity querySysUserByCname(SysUserEntity sysuser);
+	
+	/*
+	 * 通过id查询
+	 * */
+	SysUserEntity querySysUserById(SysUserEntity sysuser);
+	
+	/*
+	 * 
+	 * 查询所有员工
+	 * */
+	 List<SysUserEntity> queryAllEmployee(PageLimit pageLimit);
+	
+	/*
+	 * 添加员工
+	 * @param SysUserEntity 员工
+	 * */
+	int addEmployee(SysUserEntity sysuser);
+	
+	
+	
+	 
+	 /*
+		 * 查询所有员工数量
+		 * */
+	 
+	 int  queryEmployeeCount();
+	 
+	 /*
+	  * 修改员工用户名
+	  */
+	 int updateEmpName(SysUserEntity sysUserEntity);
+	 /*
+	  * 修改员工姓名
+	  * */
+	 int updateEmpCname(SysUserEntity sysUserEntity);
+	 /*
+	  * 修改员工密码
+	  * */
+	 int updateEmpPassword(SysUserEntity sysUserEntity);
+		/*
+		 * 查询员工 byname
+		 * */
+	 SysUserEntity querySysUserByname(SysUserEntity sysuser);
+	 /*
+	  * 删除员工
+	  * */
+	 int deleteSysUser(int[] ids);
+	 /*
+	  * 禁用员工
+	  * 
+	  * */
+	 int disableSysUser(SysUserEntity sysuser);
+}

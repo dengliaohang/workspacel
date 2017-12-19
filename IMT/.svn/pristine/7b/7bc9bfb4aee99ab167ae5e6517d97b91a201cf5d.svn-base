@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.imt.sys.dao.SysUserDao">
+
+	<!-- <sql id="allmenbers"> id, device_type, device_num, create_time, last_time, 
+		state, nickname </sql> <sql id="menberEcpId"> device_type, device_num, create_time, 
+		last_time, state, nickname </sql> -->
+
+	<!-- <insert id="insertUser" parameterType="User" keyProperty="id"> insert 
+		into days_user values ( #{username}, #{pword}) </insert> -->
+
+	<!-- <delete id="deleteStudent" parameterType="int"> delete from users_name 
+		where id = #{id} </delete> <update id="updateStudent" parameterType="Student"> 
+		update users_name set name = #{name} where id = #{id} </update> <select id="queryStudentById" 
+		parameterType="int" resultType="Student"> select * from users_name where 
+		id=#{id} </select> -->
+
+	<select id="querySysUser" parameterType="SysUser"
+		resultType="com.imt.sys.entity.SysUserEntity">
+		select * from sys_user where sys_user_name=#{sys_user_name} and sys_user_password=#{sys_user_password}
+	</select>
+
+	<select id="queryAllEmployee" parameterType="pageLimit" resultType="com.imt.sys.entity.SysUserEntity">
+		select * from sys_user where sys_user_isDel=1 LIMIT #{offset},#{startlimit}
+	</select>
+	<!-- 查询所有部门 -->
+	<select id="queryAllDep"  resultType="com.imt.sys.entity.DepartmentEntity">
+		select * from department 
+	</select>
+	<!-- 查询所有职位信息 -->
+	<select id="queryAllJob"  resultType="com.imt.sys.entity.JobEntity">
+		select * from user_job 
+	</select>
+	<select id="querySysUserByname" parameterType="SysUser"
+		resultType="com.imt.sys.entity.SysUserEntity">
+		select * from sys_user where sys_user_name=#{sys_user_name} and sys_user_isDel=#{sys_user_isDel}
+	</select>
+	
+	<select id="querySysUserById" parameterType="SysUser"
+		resultType="com.imt.sys.entity.SysUserEntity">
+		select * from sys_user where sys_user_id=#{sys_user_id} 
+	</select>
+	
+	<select id="querySysUserByCname" parameterType="SysUser"
+		resultType="com.imt.sys.entity.SysUserEntity">
+		select * from sys_user where sys_user_Cname=#{sys_user_Cname}
+	</select>
+
+	<insert id="addEmployee" parameterType="SysUser">
+		insert into sys_user
+		values
+		(
+		#{sys_user_id},
+		#{sys_user_name},
+		#{sys_user_password},
+		#{sys_user_state},
+		#{sys_user_Cname},
+		#{sys_user_isDel},
+		#{sys_user_able},
+		#{job_id},
+		#{department_id}
+		)
+	</insert>
+	<!-- 查询所有用户 -->
+	<select id="queryAllEmp"  resultType="com.imt.sys.entity.SysUserEntity">
+		select * from sys_user where sys_user_isDel=1 
+	</select>
+	<select id="queryEmployeeCount"  resultType="java.lang.Integer">
+		select count(*) from sys_user 
+	</select>
+		
+	<update id="updateEmpName" parameterType="SysUser" >
+		update sys_user set sys_user_name=#{sys_user_name},sys_user_Cname=#{sys_user_Cname},
+		sys_user_password=#{sys_user_password} where sys_user_id=#{sys_user_id}
+	</update>
+	
+	<delete id="deleteSysUser" parameterType="int">
+		delete from sys_user where sys_user_id in
+        <foreach item="empItem" collection="array" open="(" separator="," close=")">
+            #{empItem}
+        </foreach>
+	</delete>
+	<!-- 禁用员工账号 -->
+	<update id="disableSysUser" parameterType="SysUser" >
+		update sys_user set sys_user_able=#{sys_user_able} where sys_user_id=#{sys_user_id}
+	</update>
+</mapper>

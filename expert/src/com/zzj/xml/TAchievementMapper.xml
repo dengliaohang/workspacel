@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzj.dao.TAchievementMapper" >
+  <resultMap id="BaseResultMap" type="com.zzj.entity.TAchievement" >
+    <id column="Id" property="id" jdbcType="CHAR" />
+    <result column="Department" property="department" jdbcType="NVARCHAR" />
+    <result column="Creater" property="creater" jdbcType="NVARCHAR" />
+    <result column="KeyWord" property="keyword" jdbcType="NVARCHAR" />
+    <result column="FinishDay" property="finishday" jdbcType="TIMESTAMP" />
+    <result column="AreaId" property="areaid" jdbcType="VARCHAR" />
+    <result column="RegionId" property="regionid" jdbcType="VARCHAR" />
+    <result column="Name" property="name" jdbcType="NVARCHAR" />
+    <result column="Description" property="description" jdbcType="LONGNVARCHAR" />
+    <result column="Image" property="image" jdbcType="VARCHAR" />
+    <result column="Maturity" property="maturity" jdbcType="NVARCHAR" />
+    <result column="TransferType" property="transfertype" jdbcType="INTEGER" />
+    <result column="PublishId" property="publishid" jdbcType="CHAR" />
+    <result column="Price" property="price" jdbcType="DECIMAL" />
+    <result column="IsBargain" property="isbargain" jdbcType="BIT" />
+    <result column="Stock" property="stock" jdbcType="INTEGER" />
+    <result column="Count" property="count" jdbcType="INTEGER" />
+    <result column="visit" property="visit" jdbcType="INTEGER" />
+    <result column="State" property="state" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, Department, Creater, KeyWord, FinishDay, AreaId, RegionId, Name, Description, 
+    Image, Maturity, TransferType, PublishId, Price, IsBargain, Stock, Count, visit, 
+    State
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_achievement
+    where Id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from T_achievement
+    where Id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zzj.entity.TAchievement" >
+    insert into T_achievement (Id, Department, Creater, 
+      KeyWord, FinishDay, AreaId, 
+      RegionId, Name, Description, 
+      Image, Maturity, TransferType, 
+      PublishId, Price, IsBargain, 
+      Stock, Count, visit, 
+      State)
+    values (#{id,jdbcType=CHAR}, #{department,jdbcType=NVARCHAR}, #{creater,jdbcType=NVARCHAR}, 
+      #{keyword,jdbcType=NVARCHAR}, #{finishday,jdbcType=TIMESTAMP}, #{areaid,jdbcType=VARCHAR}, 
+      #{regionid,jdbcType=VARCHAR}, #{name,jdbcType=NVARCHAR}, #{description,jdbcType=LONGNVARCHAR}, 
+      #{image,jdbcType=VARCHAR}, #{maturity,jdbcType=NVARCHAR}, #{transfertype,jdbcType=INTEGER}, 
+      #{publishid,jdbcType=CHAR}, #{price,jdbcType=DECIMAL}, #{isbargain,jdbcType=BIT}, 
+      #{stock,jdbcType=INTEGER}, #{count,jdbcType=INTEGER}, #{visit,jdbcType=INTEGER}, 
+      #{state,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzj.entity.TAchievement" >
+    insert into T_achievement
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="department != null" >
+        Department,
+      </if>
+      <if test="creater != null" >
+        Creater,
+      </if>
+      <if test="keyword != null" >
+        KeyWord,
+      </if>
+      <if test="finishday != null" >
+        FinishDay,
+      </if>
+      <if test="areaid != null" >
+        AreaId,
+      </if>
+      <if test="regionid != null" >
+        RegionId,
+      </if>
+      <if test="name != null" >
+        Name,
+      </if>
+      <if test="description != null" >
+        Description,
+      </if>
+      <if test="image != null" >
+        Image,
+      </if>
+      <if test="maturity != null" >
+        Maturity,
+      </if>
+      <if test="transfertype != null" >
+        TransferType,
+      </if>
+      <if test="publishid != null" >
+        PublishId,
+      </if>
+      <if test="price != null" >
+        Price,
+      </if>
+      <if test="isbargain != null" >
+        IsBargain,
+      </if>
+      <if test="stock != null" >
+        Stock,
+      </if>
+      <if test="count != null" >
+        Count,
+      </if>
+      <if test="visit != null" >
+        visit,
+      </if>
+      <if test="state != null" >
+        State,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="department != null" >
+        #{department,jdbcType=NVARCHAR},
+      </if>
+      <if test="creater != null" >
+        #{creater,jdbcType=NVARCHAR},
+      </if>
+      <if test="keyword != null" >
+        #{keyword,jdbcType=NVARCHAR},
+      </if>
+      <if test="finishday != null" >
+        #{finishday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="areaid != null" >
+        #{areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="regionid != null" >
+        #{regionid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=NVARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="image != null" >
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="maturity != null" >
+        #{maturity,jdbcType=NVARCHAR},
+      </if>
+      <if test="transfertype != null" >
+        #{transfertype,jdbcType=INTEGER},
+      </if>
+      <if test="publishid != null" >
+        #{publishid,jdbcType=CHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="isbargain != null" >
+        #{isbargain,jdbcType=BIT},
+      </if>
+      <if test="stock != null" >
+        #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="count != null" >
+        #{count,jdbcType=INTEGER},
+      </if>
+      <if test="visit != null" >
+        #{visit,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzj.entity.TAchievement" >
+    update T_achievement
+    <set >
+      <if test="department != null" >
+        Department = #{department,jdbcType=NVARCHAR},
+      </if>
+      <if test="creater != null" >
+        Creater = #{creater,jdbcType=NVARCHAR},
+      </if>
+      <if test="keyword != null" >
+        KeyWord = #{keyword,jdbcType=NVARCHAR},
+      </if>
+      <if test="finishday != null" >
+        FinishDay = #{finishday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="areaid != null" >
+        AreaId = #{areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="regionid != null" >
+        RegionId = #{regionid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        Name = #{name,jdbcType=NVARCHAR},
+      </if>
+      <if test="description != null" >
+        Description = #{description,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="image != null" >
+        Image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="maturity != null" >
+        Maturity = #{maturity,jdbcType=NVARCHAR},
+      </if>
+      <if test="transfertype != null" >
+        TransferType = #{transfertype,jdbcType=INTEGER},
+      </if>
+      <if test="publishid != null" >
+        PublishId = #{publishid,jdbcType=CHAR},
+      </if>
+      <if test="price != null" >
+        Price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="isbargain != null" >
+        IsBargain = #{isbargain,jdbcType=BIT},
+      </if>
+      <if test="stock != null" >
+        Stock = #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="count != null" >
+        Count = #{count,jdbcType=INTEGER},
+      </if>
+      <if test="visit != null" >
+        visit = #{visit,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        State = #{state,jdbcType=BIT},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zzj.entity.TAchievement" >
+    update T_achievement
+    set Department = #{department,jdbcType=NVARCHAR},
+      Creater = #{creater,jdbcType=NVARCHAR},
+      KeyWord = #{keyword,jdbcType=NVARCHAR},
+      FinishDay = #{finishday,jdbcType=TIMESTAMP},
+      AreaId = #{areaid,jdbcType=VARCHAR},
+      RegionId = #{regionid,jdbcType=VARCHAR},
+      Name = #{name,jdbcType=NVARCHAR},
+      Description = #{description,jdbcType=LONGNVARCHAR},
+      Image = #{image,jdbcType=VARCHAR},
+      Maturity = #{maturity,jdbcType=NVARCHAR},
+      TransferType = #{transfertype,jdbcType=INTEGER},
+      PublishId = #{publishid,jdbcType=CHAR},
+      Price = #{price,jdbcType=DECIMAL},
+      IsBargain = #{isbargain,jdbcType=BIT},
+      Stock = #{stock,jdbcType=INTEGER},
+      Count = #{count,jdbcType=INTEGER},
+      visit = #{visit,jdbcType=INTEGER},
+      State = #{state,jdbcType=BIT}
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

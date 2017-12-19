@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzj.dao.TConsultMapper" >
+  <resultMap id="BaseResultMap" type="com.zzj.entity.TConsult" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="publishId" property="publishid" jdbcType="INTEGER" />
+    <result column="ReceiveId" property="receiveid" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="pubDay" property="pubday" jdbcType="TIMESTAMP" />
+    <result column="isParent" property="isparent" jdbcType="INTEGER" />
+    <result column="PId" property="pid" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.zzj.entity.TConsult" extends="BaseResultMap" >
+    <result column="detail" property="detail" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, publishId, ReceiveId, name, pubDay, isParent, PId
+  </sql>
+  <sql id="Blob_Column_List" >
+    detail
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_consult
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_consult
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zzj.entity.TConsult" >
+    insert into t_consult (id, publishId, ReceiveId, 
+      name, pubDay, isParent, 
+      PId, detail)
+    values (#{id,jdbcType=INTEGER}, #{publishid,jdbcType=INTEGER}, #{receiveid,jdbcType=INTEGER}, 
+      #{name,jdbcType=VARCHAR}, #{pubday,jdbcType=TIMESTAMP}, #{isparent,jdbcType=INTEGER}, 
+      #{pid,jdbcType=INTEGER}, #{detail,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzj.entity.TConsult" >
+    insert into t_consult
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="publishid != null" >
+        publishId,
+      </if>
+      <if test="receiveid != null" >
+        ReceiveId,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="pubday != null" >
+        pubDay,
+      </if>
+      <if test="isparent != null" >
+        isParent,
+      </if>
+      <if test="pid != null" >
+        PId,
+      </if>
+      <if test="detail != null" >
+        detail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="publishid != null" >
+        #{publishid,jdbcType=INTEGER},
+      </if>
+      <if test="receiveid != null" >
+        #{receiveid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pubday != null" >
+        #{pubday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isparent != null" >
+        #{isparent,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="detail != null" >
+        #{detail,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzj.entity.TConsult" >
+    update t_consult
+    <set >
+      <if test="publishid != null" >
+        publishId = #{publishid,jdbcType=INTEGER},
+      </if>
+      <if test="receiveid != null" >
+        ReceiveId = #{receiveid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pubday != null" >
+        pubDay = #{pubday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isparent != null" >
+        isParent = #{isparent,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null" >
+        PId = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="detail != null" >
+        detail = #{detail,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zzj.entity.TConsult" >
+    update t_consult
+    set publishId = #{publishid,jdbcType=INTEGER},
+      ReceiveId = #{receiveid,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      pubDay = #{pubday,jdbcType=TIMESTAMP},
+      isParent = #{isparent,jdbcType=INTEGER},
+      PId = #{pid,jdbcType=INTEGER},
+      detail = #{detail,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zzj.entity.TConsult" >
+    update t_consult
+    set publishId = #{publishid,jdbcType=INTEGER},
+      ReceiveId = #{receiveid,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      pubDay = #{pubday,jdbcType=TIMESTAMP},
+      isParent = #{isparent,jdbcType=INTEGER},
+      PId = #{pid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

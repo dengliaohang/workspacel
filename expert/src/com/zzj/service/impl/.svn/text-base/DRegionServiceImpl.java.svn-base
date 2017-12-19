@@ -1,0 +1,21 @@
+package com.zzj.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.zzj.dao.DRegionMapper;
+import com.zzj.entity.DRegion;
+import com.zzj.service.DRegionService;
+
+public class DRegionServiceImpl implements DRegionService {
+	
+	@Autowired
+	private DRegionMapper dRegionMapper;
+	
+    public int insert(DRegion record) throws Exception {
+		return dRegionMapper.insert(record);
+	}
+
+    public int insertSelective(DRegion record) throws Exception {
+		return dRegionMapper.insertSelective(record);
+	}
+}

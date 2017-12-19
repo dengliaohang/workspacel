@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzj.dao.TExpertMapper" >
+  <resultMap id="BaseResultMap" type="com.zzj.entity.TExpert" >
+    <id column="Id" property="id" jdbcType="CHAR" />
+    <result column="RealName" property="realname" jdbcType="NCHAR" />
+    <result column="BirthDay" property="birthday" jdbcType="TIMESTAMP" />
+    <result column="LocationId" property="locationid" jdbcType="VARCHAR" />
+    <result column="AreaId" property="areaid" jdbcType="VARCHAR" />
+    <result column="KeyWord" property="keyword" jdbcType="NVARCHAR" />
+    <result column="Research" property="research" jdbcType="NVARCHAR" />
+    <result column="Introduction" property="introduction" jdbcType="LONGNVARCHAR" />
+    <result column="Result" property="result" jdbcType="LONGNVARCHAR" />
+    <result column="Image" property="image" jdbcType="NVARCHAR" />
+    <result column="Title" property="title" jdbcType="NVARCHAR" />
+    <result column="TaskGrade" property="taskgrade" jdbcType="INTEGER" />
+    <result column="HonorGrade" property="honorgrade" jdbcType="INTEGER" />
+    <result column="TaskCount" property="taskcount" jdbcType="INTEGER" />
+    <result column="Visit" property="visit" jdbcType="INTEGER" />
+    <result column="Identifier" property="identifier" jdbcType="INTEGER" />
+    <result column="IsIdent" property="isident" jdbcType="BIT" />
+    <result column="IsGuest" property="isguest" jdbcType="BIT" />
+    <result column="Security" property="security" jdbcType="DECIMAL" />
+    <result column="IsOrder" property="isorder" jdbcType="BIT" />
+    <result column="BackDay" property="backday" jdbcType="TIMESTAMP" />
+    <result column="IsDisable" property="isdisable" jdbcType="BIT" />
+    <result column="TeamOrder" property="teamorder" jdbcType="INTEGER" />
+    <result column="Sign" property="sign" jdbcType="NVARCHAR" />
+    <result column="IsTop" property="istop" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, RealName, BirthDay, LocationId, AreaId, KeyWord, Research, Introduction, Result, 
+    Image, Title, TaskGrade, HonorGrade, TaskCount, Visit, Identifier, IsIdent, IsGuest, 
+    Security, IsOrder, BackDay, IsDisable, TeamOrder, Sign, IsTop
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_expert
+    where Id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from T_expert
+    where Id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zzj.entity.TExpert" >
+    insert into T_expert (Id, RealName, BirthDay, 
+      LocationId, AreaId, KeyWord, 
+      Research, Introduction, Result, 
+      Image, Title, TaskGrade, 
+      HonorGrade, TaskCount, Visit, 
+      Identifier, IsIdent, IsGuest, 
+      Security, IsOrder, BackDay, 
+      IsDisable, TeamOrder, Sign, 
+      IsTop)
+    values (#{id,jdbcType=CHAR}, #{realname,jdbcType=NCHAR}, #{birthday,jdbcType=TIMESTAMP}, 
+      #{locationid,jdbcType=VARCHAR}, #{areaid,jdbcType=VARCHAR}, #{keyword,jdbcType=NVARCHAR}, 
+      #{research,jdbcType=NVARCHAR}, #{introduction,jdbcType=LONGNVARCHAR}, #{result,jdbcType=LONGNVARCHAR}, 
+      #{image,jdbcType=NVARCHAR}, #{title,jdbcType=NVARCHAR}, #{taskgrade,jdbcType=INTEGER}, 
+      #{honorgrade,jdbcType=INTEGER}, #{taskcount,jdbcType=INTEGER}, #{visit,jdbcType=INTEGER}, 
+      #{identifier,jdbcType=INTEGER}, #{isident,jdbcType=BIT}, #{isguest,jdbcType=BIT}, 
+      #{security,jdbcType=DECIMAL}, #{isorder,jdbcType=BIT}, #{backday,jdbcType=TIMESTAMP}, 
+      #{isdisable,jdbcType=BIT}, #{teamorder,jdbcType=INTEGER}, #{sign,jdbcType=NVARCHAR}, 
+      #{istop,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzj.entity.TExpert" >
+    insert into T_expert
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="realname != null" >
+        RealName,
+      </if>
+      <if test="birthday != null" >
+        BirthDay,
+      </if>
+      <if test="locationid != null" >
+        LocationId,
+      </if>
+      <if test="areaid != null" >
+        AreaId,
+      </if>
+      <if test="keyword != null" >
+        KeyWord,
+      </if>
+      <if test="research != null" >
+        Research,
+      </if>
+      <if test="introduction != null" >
+        Introduction,
+      </if>
+      <if test="result != null" >
+        Result,
+      </if>
+      <if test="image != null" >
+        Image,
+      </if>
+      <if test="title != null" >
+        Title,
+      </if>
+      <if test="taskgrade != null" >
+        TaskGrade,
+      </if>
+      <if test="honorgrade != null" >
+        HonorGrade,
+      </if>
+      <if test="taskcount != null" >
+        TaskCount,
+      </if>
+      <if test="visit != null" >
+        Visit,
+      </if>
+      <if test="identifier != null" >
+        Identifier,
+      </if>
+      <if test="isident != null" >
+        IsIdent,
+      </if>
+      <if test="isguest != null" >
+        IsGuest,
+      </if>
+      <if test="security != null" >
+        Security,
+      </if>
+      <if test="isorder != null" >
+        IsOrder,
+      </if>
+      <if test="backday != null" >
+        BackDay,
+      </if>
+      <if test="isdisable != null" >
+        IsDisable,
+      </if>
+      <if test="teamorder != null" >
+        TeamOrder,
+      </if>
+      <if test="sign != null" >
+        Sign,
+      </if>
+      <if test="istop != null" >
+        IsTop,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="realname != null" >
+        #{realname,jdbcType=NCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="locationid != null" >
+        #{locationid,jdbcType=VARCHAR},
+      </if>
+      <if test="areaid != null" >
+        #{areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword != null" >
+        #{keyword,jdbcType=NVARCHAR},
+      </if>
+      <if test="research != null" >
+        #{research,jdbcType=NVARCHAR},
+      </if>
+      <if test="introduction != null" >
+        #{introduction,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="result != null" >
+        #{result,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="image != null" >
+        #{image,jdbcType=NVARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=NVARCHAR},
+      </if>
+      <if test="taskgrade != null" >
+        #{taskgrade,jdbcType=INTEGER},
+      </if>
+      <if test="honorgrade != null" >
+        #{honorgrade,jdbcType=INTEGER},
+      </if>
+      <if test="taskcount != null" >
+        #{taskcount,jdbcType=INTEGER},
+      </if>
+      <if test="visit != null" >
+        #{visit,jdbcType=INTEGER},
+      </if>
+      <if test="identifier != null" >
+        #{identifier,jdbcType=INTEGER},
+      </if>
+      <if test="isident != null" >
+        #{isident,jdbcType=BIT},
+      </if>
+      <if test="isguest != null" >
+        #{isguest,jdbcType=BIT},
+      </if>
+      <if test="security != null" >
+        #{security,jdbcType=DECIMAL},
+      </if>
+      <if test="isorder != null" >
+        #{isorder,jdbcType=BIT},
+      </if>
+      <if test="backday != null" >
+        #{backday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdisable != null" >
+        #{isdisable,jdbcType=BIT},
+      </if>
+      <if test="teamorder != null" >
+        #{teamorder,jdbcType=INTEGER},
+      </if>
+      <if test="sign != null" >
+        #{sign,jdbcType=NVARCHAR},
+      </if>
+      <if test="istop != null" >
+        #{istop,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzj.entity.TExpert" >
+    update T_expert
+    <set >
+      <if test="realname != null" >
+        RealName = #{realname,jdbcType=NCHAR},
+      </if>
+      <if test="birthday != null" >
+        BirthDay = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="locationid != null" >
+        LocationId = #{locationid,jdbcType=VARCHAR},
+      </if>
+      <if test="areaid != null" >
+        AreaId = #{areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword != null" >
+        KeyWord = #{keyword,jdbcType=NVARCHAR},
+      </if>
+      <if test="research != null" >
+        Research = #{research,jdbcType=NVARCHAR},
+      </if>
+      <if test="introduction != null" >
+        Introduction = #{introduction,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="result != null" >
+        Result = #{result,jdbcType=LONGNVARCHAR},
+      </if>
+      <if test="image != null" >
+        Image = #{image,jdbcType=NVARCHAR},
+      </if>
+      <if test="title != null" >
+        Title = #{title,jdbcType=NVARCHAR},
+      </if>
+      <if test="taskgrade != null" >
+        TaskGrade = #{taskgrade,jdbcType=INTEGER},
+      </if>
+      <if test="honorgrade != null" >
+        HonorGrade = #{honorgrade,jdbcType=INTEGER},
+      </if>
+      <if test="taskcount != null" >
+        TaskCount = #{taskcount,jdbcType=INTEGER},
+      </if>
+      <if test="visit != null" >
+        Visit = #{visit,jdbcType=INTEGER},
+      </if>
+      <if test="identifier != null" >
+        Identifier = #{identifier,jdbcType=INTEGER},
+      </if>
+      <if test="isident != null" >
+        IsIdent = #{isident,jdbcType=BIT},
+      </if>
+      <if test="isguest != null" >
+        IsGuest = #{isguest,jdbcType=BIT},
+      </if>
+      <if test="security != null" >
+        Security = #{security,jdbcType=DECIMAL},
+      </if>
+      <if test="isorder != null" >
+        IsOrder = #{isorder,jdbcType=BIT},
+      </if>
+      <if test="backday != null" >
+        BackDay = #{backday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdisable != null" >
+        IsDisable = #{isdisable,jdbcType=BIT},
+      </if>
+      <if test="teamorder != null" >
+        TeamOrder = #{teamorder,jdbcType=INTEGER},
+      </if>
+      <if test="sign != null" >
+        Sign = #{sign,jdbcType=NVARCHAR},
+      </if>
+      <if test="istop != null" >
+        IsTop = #{istop,jdbcType=BIT},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zzj.entity.TExpert" >
+    update T_expert
+    set RealName = #{realname,jdbcType=NCHAR},
+      BirthDay = #{birthday,jdbcType=TIMESTAMP},
+      LocationId = #{locationid,jdbcType=VARCHAR},
+      AreaId = #{areaid,jdbcType=VARCHAR},
+      KeyWord = #{keyword,jdbcType=NVARCHAR},
+      Research = #{research,jdbcType=NVARCHAR},
+      Introduction = #{introduction,jdbcType=LONGNVARCHAR},
+      Result = #{result,jdbcType=LONGNVARCHAR},
+      Image = #{image,jdbcType=NVARCHAR},
+      Title = #{title,jdbcType=NVARCHAR},
+      TaskGrade = #{taskgrade,jdbcType=INTEGER},
+      HonorGrade = #{honorgrade,jdbcType=INTEGER},
+      TaskCount = #{taskcount,jdbcType=INTEGER},
+      Visit = #{visit,jdbcType=INTEGER},
+      Identifier = #{identifier,jdbcType=INTEGER},
+      IsIdent = #{isident,jdbcType=BIT},
+      IsGuest = #{isguest,jdbcType=BIT},
+      Security = #{security,jdbcType=DECIMAL},
+      IsOrder = #{isorder,jdbcType=BIT},
+      BackDay = #{backday,jdbcType=TIMESTAMP},
+      IsDisable = #{isdisable,jdbcType=BIT},
+      TeamOrder = #{teamorder,jdbcType=INTEGER},
+      Sign = #{sign,jdbcType=NVARCHAR},
+      IsTop = #{istop,jdbcType=BIT}
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

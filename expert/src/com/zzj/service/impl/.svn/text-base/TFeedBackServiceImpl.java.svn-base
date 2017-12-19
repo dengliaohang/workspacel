@@ -1,0 +1,40 @@
+package com.zzj.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.zzj.dao.TFeedBackMapper;
+import com.zzj.entity.TFeedBack;
+import com.zzj.service.TFeedBackService;
+@Service
+public class TFeedBackServiceImpl implements TFeedBackService {
+	
+	@Autowired
+	private TFeedBackMapper tFeedBackMapper;
+	
+	
+	
+    public int deleteByPrimaryKey(Integer id) throws Exception {
+		return tFeedBackMapper.deleteByPrimaryKey(id);
+	}
+
+    public int insert(TFeedBack record) throws Exception {
+		return tFeedBackMapper.insert(record);
+	}
+
+    public int insertSelective(TFeedBack record) throws Exception {
+		return tFeedBackMapper.insertSelective(record);
+	}
+
+    public TFeedBack selectByPrimaryKey(Integer id) throws Exception {
+		return tFeedBackMapper.selectByPrimaryKey(id);
+	}
+
+    public int updateByPrimaryKeySelective(TFeedBack record) throws Exception {
+		return tFeedBackMapper.updateByPrimaryKeySelective(record);
+	}
+
+    public int updateByPrimaryKey(TFeedBack record) throws Exception {
+		return tFeedBackMapper.updateByPrimaryKey(record);
+	}
+}

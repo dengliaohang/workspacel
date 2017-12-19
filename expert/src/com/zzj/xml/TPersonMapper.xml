@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzj.dao.TPersonMapper" >
+  <resultMap id="BaseResultMap" type="com.zzj.entity.TPerson" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="userName" property="username" jdbcType="VARCHAR" />
+    <result column="passWord" property="password" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="firstTime" property="firsttime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="openId" property="openid" jdbcType="VARCHAR" />
+    <result column="connectionId" property="connectionid" jdbcType="VARCHAR" />
+    <result column="realName" property="realname" jdbcType="VARCHAR" />
+    <result column="birthDay" property="birthday" jdbcType="TIMESTAMP" />
+    <result column="LocationId" property="locationid" jdbcType="VARCHAR" />
+    <result column="titleCode" property="titlecode" jdbcType="VARCHAR" />
+    <result column="areaId" property="areaid" jdbcType="VARCHAR" />
+    <result column="keyWord" property="keyword" jdbcType="VARCHAR" />
+    <result column="research" property="research" jdbcType="VARCHAR" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="taskGrade" property="taskgrade" jdbcType="INTEGER" />
+    <result column="honorGrade" property="honorgrade" jdbcType="INTEGER" />
+    <result column="taskCount" property="taskcount" jdbcType="INTEGER" />
+    <result column="visit" property="visit" jdbcType="INTEGER" />
+    <result column="Identifier" property="identifier" jdbcType="INTEGER" />
+    <result column="isIdent" property="isident" jdbcType="INTEGER" />
+    <result column="isGuest" property="isguest" jdbcType="INTEGER" />
+    <result column="security" property="security" jdbcType="DECIMAL" />
+    <result column="isOrder" property="isorder" jdbcType="INTEGER" />
+    <result column="backDay" property="backday" jdbcType="TIMESTAMP" />
+    <result column="idDisable" property="iddisable" jdbcType="INTEGER" />
+    <result column="sign" property="sign" jdbcType="VARCHAR" />
+    <result column="isTop" property="istop" jdbcType="INTEGER" />
+    <result column="isExpert" property="isexpert" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.zzj.entity.TPersonWithBLOBs" extends="BaseResultMap" >
+    <result column="Introduction" property="introduction" jdbcType="LONGVARCHAR" />
+    <result column="result" property="result" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, userName, passWord, phone, email, firstTime, updateTime, openId, connectionId, 
+    realName, birthDay, LocationId, titleCode, areaId, keyWord, research, image, title, 
+    taskGrade, honorGrade, taskCount, visit, Identifier, isIdent, isGuest, security, 
+    isOrder, backDay, idDisable, sign, isTop, isExpert
+  </sql>
+  <sql id="Blob_Column_List" >
+    Introduction, result
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_person
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_person
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zzj.entity.TPersonWithBLOBs" >
+    insert into t_person (id, userName, passWord, 
+      phone, email, firstTime, 
+      updateTime, openId, connectionId, 
+      realName, birthDay, LocationId, 
+      titleCode, areaId, keyWord, 
+      research, image, title, 
+      taskGrade, honorGrade, taskCount, 
+      visit, Identifier, isIdent, 
+      isGuest, security, isOrder, 
+      backDay, idDisable, sign, 
+      isTop, isExpert, Introduction, 
+      result)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{firsttime,jdbcType=TIMESTAMP}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{openid,jdbcType=VARCHAR}, #{connectionid,jdbcType=VARCHAR}, 
+      #{realname,jdbcType=VARCHAR}, #{birthday,jdbcType=TIMESTAMP}, #{locationid,jdbcType=VARCHAR}, 
+      #{titlecode,jdbcType=VARCHAR}, #{areaid,jdbcType=VARCHAR}, #{keyword,jdbcType=VARCHAR}, 
+      #{research,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{taskgrade,jdbcType=INTEGER}, #{honorgrade,jdbcType=INTEGER}, #{taskcount,jdbcType=INTEGER}, 
+      #{visit,jdbcType=INTEGER}, #{identifier,jdbcType=INTEGER}, #{isident,jdbcType=INTEGER}, 
+      #{isguest,jdbcType=INTEGER}, #{security,jdbcType=DECIMAL}, #{isorder,jdbcType=INTEGER}, 
+      #{backday,jdbcType=TIMESTAMP}, #{iddisable,jdbcType=INTEGER}, #{sign,jdbcType=VARCHAR}, 
+      #{istop,jdbcType=INTEGER}, #{isexpert,jdbcType=INTEGER}, #{introduction,jdbcType=LONGVARCHAR}, 
+      #{result,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzj.entity.TPersonWithBLOBs" >
+    insert into t_person
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="username != null" >
+        userName,
+      </if>
+      <if test="password != null" >
+        passWord,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="firsttime != null" >
+        firstTime,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+      <if test="openid != null" >
+        openId,
+      </if>
+      <if test="connectionid != null" >
+        connectionId,
+      </if>
+      <if test="realname != null" >
+        realName,
+      </if>
+      <if test="birthday != null" >
+        birthDay,
+      </if>
+      <if test="locationid != null" >
+        LocationId,
+      </if>
+      <if test="titlecode != null" >
+        titleCode,
+      </if>
+      <if test="areaid != null" >
+        areaId,
+      </if>
+      <if test="keyword != null" >
+        keyWord,
+      </if>
+      <if test="research != null" >
+        research,
+      </if>
+      <if test="image != null" >
+        image,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="taskgrade != null" >
+        taskGrade,
+      </if>
+      <if test="honorgrade != null" >
+        honorGrade,
+      </if>
+      <if test="taskcount != null" >
+        taskCount,
+      </if>
+      <if test="visit != null" >
+        visit,
+      </if>
+      <if test="identifier != null" >
+        Identifier,
+      </if>
+      <if test="isident != null" >
+        isIdent,
+      </if>
+      <if test="isguest != null" >
+        isGuest,
+      </if>
+      <if test="security != null" >
+        security,
+      </if>
+      <if test="isorder != null" >
+        isOrder,
+      </if>
+      <if test="backday != null" >
+        backDay,
+      </if>
+      <if test="iddisable != null" >
+        idDisable,
+      </if>
+      <if test="sign != null" >
+        sign,
+      </if>
+      <if test="istop != null" >
+        isTop,
+      </if>
+      <if test="isexpert != null" >
+        isExpert,
+      </if>
+      <if test="introduction != null" >
+        Introduction,
+      </if>
+      <if test="result != null" >
+        result,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="firsttime != null" >
+        #{firsttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="openid != null" >
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="connectionid != null" >
+        #{connectionid,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="locationid != null" >
+        #{locationid,jdbcType=VARCHAR},
+      </if>
+      <if test="titlecode != null" >
+        #{titlecode,jdbcType=VARCHAR},
+      </if>
+      <if test="areaid != null" >
+        #{areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword != null" >
+        #{keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="research != null" >
+        #{research,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="taskgrade != null" >
+        #{taskgrade,jdbcType=INTEGER},
+      </if>
+      <if test="honorgrade != null" >
+        #{honorgrade,jdbcType=INTEGER},
+      </if>
+      <if test="taskcount != null" >
+        #{taskcount,jdbcType=INTEGER},
+      </if>
+      <if test="visit != null" >
+        #{visit,jdbcType=INTEGER},
+      </if>
+      <if test="identifier != null" >
+        #{identifier,jdbcType=INTEGER},
+      </if>
+      <if test="isident != null" >
+        #{isident,jdbcType=INTEGER},
+      </if>
+      <if test="isguest != null" >
+        #{isguest,jdbcType=INTEGER},
+      </if>
+      <if test="security != null" >
+        #{security,jdbcType=DECIMAL},
+      </if>
+      <if test="isorder != null" >
+        #{isorder,jdbcType=INTEGER},
+      </if>
+      <if test="backday != null" >
+        #{backday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="iddisable != null" >
+        #{iddisable,jdbcType=INTEGER},
+      </if>
+      <if test="sign != null" >
+        #{sign,jdbcType=VARCHAR},
+      </if>
+      <if test="istop != null" >
+        #{istop,jdbcType=INTEGER},
+      </if>
+      <if test="isexpert != null" >
+        #{isexpert,jdbcType=INTEGER},
+      </if>
+      <if test="introduction != null" >
+        #{introduction,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="result != null" >
+        #{result,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzj.entity.TPersonWithBLOBs" >
+    update t_person
+    <set >
+      <if test="username != null" >
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        passWord = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="firsttime != null" >
+        firstTime = #{firsttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="openid != null" >
+        openId = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="connectionid != null" >
+        connectionId = #{connectionid,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        realName = #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        birthDay = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="locationid != null" >
+        LocationId = #{locationid,jdbcType=VARCHAR},
+      </if>
+      <if test="titlecode != null" >
+        titleCode = #{titlecode,jdbcType=VARCHAR},
+      </if>
+      <if test="areaid != null" >
+        areaId = #{areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword != null" >
+        keyWord = #{keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="research != null" >
+        research = #{research,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="taskgrade != null" >
+        taskGrade = #{taskgrade,jdbcType=INTEGER},
+      </if>
+      <if test="honorgrade != null" >
+        honorGrade = #{honorgrade,jdbcType=INTEGER},
+      </if>
+      <if test="taskcount != null" >
+        taskCount = #{taskcount,jdbcType=INTEGER},
+      </if>
+      <if test="visit != null" >
+        visit = #{visit,jdbcType=INTEGER},
+      </if>
+      <if test="identifier != null" >
+        Identifier = #{identifier,jdbcType=INTEGER},
+      </if>
+      <if test="isident != null" >
+        isIdent = #{isident,jdbcType=INTEGER},
+      </if>
+      <if test="isguest != null" >
+        isGuest = #{isguest,jdbcType=INTEGER},
+      </if>
+      <if test="security != null" >
+        security = #{security,jdbcType=DECIMAL},
+      </if>
+      <if test="isorder != null" >
+        isOrder = #{isorder,jdbcType=INTEGER},
+      </if>
+      <if test="backday != null" >
+        backDay = #{backday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="iddisable != null" >
+        idDisable = #{iddisable,jdbcType=INTEGER},
+      </if>
+      <if test="sign != null" >
+        sign = #{sign,jdbcType=VARCHAR},
+      </if>
+      <if test="istop != null" >
+        isTop = #{istop,jdbcType=INTEGER},
+      </if>
+      <if test="isexpert != null" >
+        isExpert = #{isexpert,jdbcType=INTEGER},
+      </if>
+      <if test="introduction != null" >
+        Introduction = #{introduction,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="result != null" >
+        result = #{result,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zzj.entity.TPersonWithBLOBs" >
+    update t_person
+    set userName = #{username,jdbcType=VARCHAR},
+      passWord = #{password,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      firstTime = #{firsttime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      openId = #{openid,jdbcType=VARCHAR},
+      connectionId = #{connectionid,jdbcType=VARCHAR},
+      realName = #{realname,jdbcType=VARCHAR},
+      birthDay = #{birthday,jdbcType=TIMESTAMP},
+      LocationId = #{locationid,jdbcType=VARCHAR},
+      titleCode = #{titlecode,jdbcType=VARCHAR},
+      areaId = #{areaid,jdbcType=VARCHAR},
+      keyWord = #{keyword,jdbcType=VARCHAR},
+      research = #{research,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      taskGrade = #{taskgrade,jdbcType=INTEGER},
+      honorGrade = #{honorgrade,jdbcType=INTEGER},
+      taskCount = #{taskcount,jdbcType=INTEGER},
+      visit = #{visit,jdbcType=INTEGER},
+      Identifier = #{identifier,jdbcType=INTEGER},
+      isIdent = #{isident,jdbcType=INTEGER},
+      isGuest = #{isguest,jdbcType=INTEGER},
+      security = #{security,jdbcType=DECIMAL},
+      isOrder = #{isorder,jdbcType=INTEGER},
+      backDay = #{backday,jdbcType=TIMESTAMP},
+      idDisable = #{iddisable,jdbcType=INTEGER},
+      sign = #{sign,jdbcType=VARCHAR},
+      isTop = #{istop,jdbcType=INTEGER},
+      isExpert = #{isexpert,jdbcType=INTEGER},
+      Introduction = #{introduction,jdbcType=LONGVARCHAR},
+      result = #{result,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zzj.entity.TPerson" >
+    update t_person
+    set userName = #{username,jdbcType=VARCHAR},
+      passWord = #{password,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      firstTime = #{firsttime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      openId = #{openid,jdbcType=VARCHAR},
+      connectionId = #{connectionid,jdbcType=VARCHAR},
+      realName = #{realname,jdbcType=VARCHAR},
+      birthDay = #{birthday,jdbcType=TIMESTAMP},
+      LocationId = #{locationid,jdbcType=VARCHAR},
+      titleCode = #{titlecode,jdbcType=VARCHAR},
+      areaId = #{areaid,jdbcType=VARCHAR},
+      keyWord = #{keyword,jdbcType=VARCHAR},
+      research = #{research,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      taskGrade = #{taskgrade,jdbcType=INTEGER},
+      honorGrade = #{honorgrade,jdbcType=INTEGER},
+      taskCount = #{taskcount,jdbcType=INTEGER},
+      visit = #{visit,jdbcType=INTEGER},
+      Identifier = #{identifier,jdbcType=INTEGER},
+      isIdent = #{isident,jdbcType=INTEGER},
+      isGuest = #{isguest,jdbcType=INTEGER},
+      security = #{security,jdbcType=DECIMAL},
+      isOrder = #{isorder,jdbcType=INTEGER},
+      backDay = #{backday,jdbcType=TIMESTAMP},
+      idDisable = #{iddisable,jdbcType=INTEGER},
+      sign = #{sign,jdbcType=VARCHAR},
+      isTop = #{istop,jdbcType=INTEGER},
+      isExpert = #{isexpert,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 分页查询全部 -->
+   <select id="selectAll" resultMap="ResultMapWithBLOBs" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_person
+    LIMIT #{cp}, #{ls}
+  </select>
+  <!-- 分页查询全部数量 -->
+  <select id="selectAllCount" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM t_person
+  </select>
+  
+  
+    <!-- 分页查询根据isExpert -->
+   <select id="selectAllByIsExpert" resultMap="ResultMapWithBLOBs" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_person
+    WHERE isExpert = #{isExpert}
+    LIMIT #{cp}, #{ls}
+  </select>
+  <!-- 分页查询根据isExpert数量 -->
+  <select id="selectAllByIsExpertCount" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM t_person
+		WHERE isExpert = #{isExpert}
+  </select>
+  
+  
+</mapper>

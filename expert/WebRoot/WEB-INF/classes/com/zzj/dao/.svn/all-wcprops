@@ -1,0 +1,137 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/MyRepository/!svn/ver/24/expert/src/com/zzj/dao
+END
+TCommentMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/MyRepository/!svn/ver/21/expert/src/com/zzj/dao/TCommentMapper.java
+END
+TAccountrecordMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/MyRepository/!svn/ver/21/expert/src/com/zzj/dao/TAccountrecordMapper.java
+END
+TPersonMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/MyRepository/!svn/ver/24/expert/src/com/zzj/dao/TPersonMapper.java
+END
+WebSetupMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/MyRepository/!svn/ver/21/expert/src/com/zzj/dao/WebSetupMapper.java
+END
+PTitleMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/MyRepository/!svn/ver/21/expert/src/com/zzj/dao/PTitleMapper.java
+END
+TNewsMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/MyRepository/!svn/ver/21/expert/src/com/zzj/dao/TNewsMapper.java
+END
+expertAdminMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/MyRepository/!svn/ver/21/expert/src/com/zzj/dao/expertAdminMapper.java
+END
+TExpertCacheMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/MyRepository/!svn/ver/21/expert/src/com/zzj/dao/TExpertCacheMapper.java
+END
+MerchandiseMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/MyRepository/!svn/ver/21/expert/src/com/zzj/dao/MerchandiseMapper.java
+END
+TDemandMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/MyRepository/!svn/ver/13/expert/src/com/zzj/dao/TDemandMapper.java
+END
+PayLogMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/MyRepository/!svn/ver/21/expert/src/com/zzj/dao/PayLogMapper.java
+END
+TAchievementMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/MyRepository/!svn/ver/14/expert/src/com/zzj/dao/TAchievementMapper.java
+END
+TOrderMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/MyRepository/!svn/ver/21/expert/src/com/zzj/dao/TOrderMapper.java
+END
+TAccountMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/MyRepository/!svn/ver/21/expert/src/com/zzj/dao/TAccountMapper.java
+END
+TFeedBackMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/MyRepository/!svn/ver/21/expert/src/com/zzj/dao/TFeedBackMapper.java
+END
+DRegionMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/MyRepository/!svn/ver/14/expert/src/com/zzj/dao/DRegionMapper.java
+END
+TConsultMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/MyRepository/!svn/ver/21/expert/src/com/zzj/dao/TConsultMapper.java
+END
+FriendsMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/MyRepository/!svn/ver/21/expert/src/com/zzj/dao/FriendsMapper.java
+END
+RecentcontactpeopleMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/MyRepository/!svn/ver/21/expert/src/com/zzj/dao/RecentcontactpeopleMapper.java
+END
+HistoryMessageMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/MyRepository/!svn/ver/21/expert/src/com/zzj/dao/HistoryMessageMapper.java
+END
+TMessageMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/MyRepository/!svn/ver/21/expert/src/com/zzj/dao/TMessageMapper.java
+END
+DAreaMapper.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/MyRepository/!svn/ver/14/expert/src/com/zzj/dao/DAreaMapper.java
+END

@@ -1,0 +1,9 @@
+package com.zzj.dao;
+
+import com.zzj.entity.DRegion;
+
+public interface DRegionMapper{
+    public int insert(DRegion record) throws Exception;
+
+    public int insertSelective(DRegion record) throws Exception;
+}

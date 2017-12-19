@@ -1,0 +1,9 @@
+package com.zzj.service;
+
+import com.zzj.entity.DRegion;
+
+public interface DRegionService{
+    public int insert(DRegion record) throws Exception;
+
+    public int insertSelective(DRegion record) throws Exception;
+}

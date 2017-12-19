@@ -1,0 +1,37 @@
+package com.zzj.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.zzj.dao.DAreaMapper;
+import com.zzj.entity.DArea;
+import com.zzj.service.DAreaService;
+@Service
+public class DAreaServiceImpl implements DAreaService{
+	@Autowired
+	private DAreaMapper dAreaMapper;
+	
+    public int deleteByPrimaryKey(String code) throws Exception {
+		return dAreaMapper.deleteByPrimaryKey(code);
+	}
+
+    public int insert(DArea record) throws Exception {
+		return dAreaMapper.insert(record);
+	}
+
+    public int insertSelective(DArea record) {
+		return dAreaMapper.insertSelective(record);
+	}
+
+    public DArea selectByPrimaryKey(String code) {
+		return dAreaMapper.selectByPrimaryKey(code);
+	}
+
+    public int updateByPrimaryKeySelective(DArea record) {
+		return dAreaMapper.updateByPrimaryKeySelective(record);
+	}
+
+    public int updateByPrimaryKey(DArea record) {
+		return dAreaMapper.updateByPrimaryKey(record);
+	}
+}

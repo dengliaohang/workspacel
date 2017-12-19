@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzj.dao.TExpertCacheMapper" >
+  <resultMap id="BaseResultMap" type="com.zzj.entity.TExpertCache" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="userName" property="username" jdbcType="VARCHAR" />
+    <result column="realName" property="realname" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="TIMESTAMP" />
+    <result column="regionId" property="regionid" jdbcType="VARCHAR" />
+    <result column="AreaId" property="areaid" jdbcType="VARCHAR" />
+    <result column="titleCode" property="titlecode" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="keyWord" property="keyword" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="identifier" property="identifier" jdbcType="INTEGER" />
+    <result column="isIdent" property="isident" jdbcType="INTEGER" />
+    <result column="sign" property="sign" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.zzj.entity.TExpertCacheWithBLOBs" extends="BaseResultMap" >
+    <result column="Introduction" property="introduction" jdbcType="LONGVARCHAR" />
+    <result column="result" property="result" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, image, userName, realName, birthday, regionId, AreaId, titleCode, title, keyWord, 
+    state, identifier, isIdent, sign
+  </sql>
+  <sql id="Blob_Column_List" >
+    Introduction, result
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_expertcache
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_expertcache
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zzj.entity.TExpertCacheWithBLOBs" >
+    insert into t_expertcache (id, image, userName, 
+      realName, birthday, regionId, 
+      AreaId, titleCode, title, 
+      keyWord, state, identifier, 
+      isIdent, sign, Introduction, 
+      result)
+    values (#{id,jdbcType=INTEGER}, #{image,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{realname,jdbcType=VARCHAR}, #{birthday,jdbcType=TIMESTAMP}, #{regionid,jdbcType=VARCHAR}, 
+      #{areaid,jdbcType=VARCHAR}, #{titlecode,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{keyword,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, #{identifier,jdbcType=INTEGER}, 
+      #{isident,jdbcType=INTEGER}, #{sign,jdbcType=VARCHAR}, #{introduction,jdbcType=LONGVARCHAR}, 
+      #{result,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzj.entity.TExpertCacheWithBLOBs" >
+    insert into t_expertcache
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="image != null" >
+        image,
+      </if>
+      <if test="username != null" >
+        userName,
+      </if>
+      <if test="realname != null" >
+        realName,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="regionid != null" >
+        regionId,
+      </if>
+      <if test="areaid != null" >
+        AreaId,
+      </if>
+      <if test="titlecode != null" >
+        titleCode,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="keyword != null" >
+        keyWord,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="identifier != null" >
+        identifier,
+      </if>
+      <if test="isident != null" >
+        isIdent,
+      </if>
+      <if test="sign != null" >
+        sign,
+      </if>
+      <if test="introduction != null" >
+        Introduction,
+      </if>
+      <if test="result != null" >
+        result,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="image != null" >
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="regionid != null" >
+        #{regionid,jdbcType=VARCHAR},
+      </if>
+      <if test="areaid != null" >
+        #{areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="titlecode != null" >
+        #{titlecode,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword != null" >
+        #{keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="identifier != null" >
+        #{identifier,jdbcType=INTEGER},
+      </if>
+      <if test="isident != null" >
+        #{isident,jdbcType=INTEGER},
+      </if>
+      <if test="sign != null" >
+        #{sign,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null" >
+        #{introduction,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="result != null" >
+        #{result,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzj.entity.TExpertCacheWithBLOBs" >
+    update t_expertcache
+    <set >
+      <if test="image != null" >
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        realName = #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="regionid != null" >
+        regionId = #{regionid,jdbcType=VARCHAR},
+      </if>
+      <if test="areaid != null" >
+        AreaId = #{areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="titlecode != null" >
+        titleCode = #{titlecode,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword != null" >
+        keyWord = #{keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="identifier != null" >
+        identifier = #{identifier,jdbcType=INTEGER},
+      </if>
+      <if test="isident != null" >
+        isIdent = #{isident,jdbcType=INTEGER},
+      </if>
+      <if test="sign != null" >
+        sign = #{sign,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null" >
+        Introduction = #{introduction,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="result != null" >
+        result = #{result,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zzj.entity.TExpertCacheWithBLOBs" >
+    update t_expertcache
+    set image = #{image,jdbcType=VARCHAR},
+      userName = #{username,jdbcType=VARCHAR},
+      realName = #{realname,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=TIMESTAMP},
+      regionId = #{regionid,jdbcType=VARCHAR},
+      AreaId = #{areaid,jdbcType=VARCHAR},
+      titleCode = #{titlecode,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      keyWord = #{keyword,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      identifier = #{identifier,jdbcType=INTEGER},
+      isIdent = #{isident,jdbcType=INTEGER},
+      sign = #{sign,jdbcType=VARCHAR},
+      Introduction = #{introduction,jdbcType=LONGVARCHAR},
+      result = #{result,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zzj.entity.TExpertCache" >
+    update t_expertcache
+    set image = #{image,jdbcType=VARCHAR},
+      userName = #{username,jdbcType=VARCHAR},
+      realName = #{realname,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=TIMESTAMP},
+      regionId = #{regionid,jdbcType=VARCHAR},
+      AreaId = #{areaid,jdbcType=VARCHAR},
+      titleCode = #{titlecode,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      keyWord = #{keyword,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      identifier = #{identifier,jdbcType=INTEGER},
+      isIdent = #{isident,jdbcType=INTEGER},
+      sign = #{sign,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

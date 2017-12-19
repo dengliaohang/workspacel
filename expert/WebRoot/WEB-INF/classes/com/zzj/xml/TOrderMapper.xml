@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zzj.dao.TOrderMapper">
+  <resultMap id="BaseResultMap" type="com.zzj.entity.TOrder">
+    <id column="Id" jdbcType="CHAR" property="id" />
+    <result column="OrderId" jdbcType="INTEGER" property="orderid" />
+    <result column="SourceId" jdbcType="CHAR" property="sourceid" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="Publisher" jdbcType="CHAR" property="publisher" />
+    <result column="Receiver" jdbcType="CHAR" property="receiver" />
+    <result column="Details" jdbcType="VARCHAR" property="details" />
+    <result column="IsSpecify" jdbcType="INTEGER" property="isspecify" />
+    <result column="AreaId" jdbcType="VARCHAR" property="areaid" />
+    <result column="IsContrast" jdbcType="INTEGER" property="iscontrast" />
+    <result column="ContrastId" jdbcType="INTEGER" property="contrastid" />
+    <result column="IsLegal" jdbcType="INTEGER" property="islegal" />
+    <result column="Price" jdbcType="DECIMAL" property="price" />
+    <result column="PayType" jdbcType="INTEGER" property="paytype" />
+    <result column="IsPay" jdbcType="INTEGER" property="ispay" />
+    <result column="Finish" jdbcType="INTEGER" property="finish" />
+    <result column="State" jdbcType="INTEGER" property="state" />
+    <result column="Satisfy" jdbcType="INTEGER" property="satisfy" />
+    <result column="PublishDay" jdbcType="TIMESTAMP" property="publishday" />
+    <result column="LastDay" jdbcType="TIMESTAMP" property="lastday" />
+    <result column="TakeDay" jdbcType="TIMESTAMP" property="takeday" />
+    <result column="PayDay" jdbcType="TIMESTAMP" property="payday" />
+    <result column="CancellDay" jdbcType="TIMESTAMP" property="cancellday" />
+    <result column="CancellReason" jdbcType="VARCHAR" property="cancellreason" />
+    <result column="RejectReason" jdbcType="VARCHAR" property="rejectreason" />
+    <result column="RefPayReason" jdbcType="VARCHAR" property="refpayreason" />
+    <result column="FinishDay" jdbcType="TIMESTAMP" property="finishday" />
+    <result column="EvaLevel" jdbcType="INTEGER" property="evalevel" />
+    <result column="AchieveId" jdbcType="CHAR" property="achieveid" />
+    <result column="BuyCount" jdbcType="INTEGER" property="buycount" />
+    <result column="TransferType" jdbcType="INTEGER" property="transfertype" />
+    <result column="IsLoan" jdbcType="INTEGER" property="isloan" />
+    <result column="LoanDay" jdbcType="TIMESTAMP" property="loanday" />
+    <result column="Rofund" jdbcType="INTEGER" property="rofund" />
+    <result column="OrderType" jdbcType="INTEGER" property="ordertype" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, OrderId, SourceId, Name, Publisher, Receiver, Details, IsSpecify, AreaId, IsContrast, 
+    ContrastId, IsLegal, Price, PayType, IsPay, Finish, State, Satisfy, PublishDay, LastDay, 
+    TakeDay, PayDay, CancellDay, CancellReason, RejectReason, RefPayReason, FinishDay, 
+    EvaLevel, AchieveId, BuyCount, TransferType, IsLoan, LoanDay, Rofund, OrderType
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from order
+    where Id = #{id,jdbcType=CHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from order
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from order
+    where Id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zzj.entity.TOrder">
+    insert into order (Id, OrderId, SourceId, 
+      Name, Publisher, Receiver, 
+      Details, IsSpecify, AreaId, 
+      IsContrast, ContrastId, IsLegal, 
+      Price, PayType, IsPay, 
+      Finish, State, Satisfy, 
+      PublishDay, LastDay, TakeDay, 
+      PayDay, CancellDay, CancellReason, 
+      RejectReason, RefPayReason, FinishDay, 
+      EvaLevel, AchieveId, BuyCount, 
+      TransferType, IsLoan, LoanDay, 
+      Rofund, OrderType)
+    values (#{id,jdbcType=CHAR}, #{orderid,jdbcType=INTEGER}, #{sourceid,jdbcType=CHAR}, 
+      #{name,jdbcType=VARCHAR}, #{publisher,jdbcType=CHAR}, #{receiver,jdbcType=CHAR}, 
+      #{details,jdbcType=VARCHAR}, #{isspecify,jdbcType=INTEGER}, #{areaid,jdbcType=VARCHAR}, 
+      #{iscontrast,jdbcType=INTEGER}, #{contrastid,jdbcType=INTEGER}, #{islegal,jdbcType=INTEGER}, 
+      #{price,jdbcType=DECIMAL}, #{paytype,jdbcType=INTEGER}, #{ispay,jdbcType=INTEGER}, 
+      #{finish,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, #{satisfy,jdbcType=INTEGER}, 
+      #{publishday,jdbcType=TIMESTAMP}, #{lastday,jdbcType=TIMESTAMP}, #{takeday,jdbcType=TIMESTAMP}, 
+      #{payday,jdbcType=TIMESTAMP}, #{cancellday,jdbcType=TIMESTAMP}, #{cancellreason,jdbcType=VARCHAR}, 
+      #{rejectreason,jdbcType=VARCHAR}, #{refpayreason,jdbcType=VARCHAR}, #{finishday,jdbcType=TIMESTAMP}, 
+      #{evalevel,jdbcType=INTEGER}, #{achieveid,jdbcType=CHAR}, #{buycount,jdbcType=INTEGER}, 
+      #{transfertype,jdbcType=INTEGER}, #{isloan,jdbcType=INTEGER}, #{loanday,jdbcType=TIMESTAMP}, 
+      #{rofund,jdbcType=INTEGER}, #{ordertype,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzj.entity.TOrder">
+    insert into order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="orderid != null">
+        OrderId,
+      </if>
+      <if test="sourceid != null">
+        SourceId,
+      </if>
+      <if test="name != null">
+        Name,
+      </if>
+      <if test="publisher != null">
+        Publisher,
+      </if>
+      <if test="receiver != null">
+        Receiver,
+      </if>
+      <if test="details != null">
+        Details,
+      </if>
+      <if test="isspecify != null">
+        IsSpecify,
+      </if>
+      <if test="areaid != null">
+        AreaId,
+      </if>
+      <if test="iscontrast != null">
+        IsContrast,
+      </if>
+      <if test="contrastid != null">
+        ContrastId,
+      </if>
+      <if test="islegal != null">
+        IsLegal,
+      </if>
+      <if test="price != null">
+        Price,
+      </if>
+      <if test="paytype != null">
+        PayType,
+      </if>
+      <if test="ispay != null">
+        IsPay,
+      </if>
+      <if test="finish != null">
+        Finish,
+      </if>
+      <if test="state != null">
+        State,
+      </if>
+      <if test="satisfy != null">
+        Satisfy,
+      </if>
+      <if test="publishday != null">
+        PublishDay,
+      </if>
+      <if test="lastday != null">
+        LastDay,
+      </if>
+      <if test="takeday != null">
+        TakeDay,
+      </if>
+      <if test="payday != null">
+        PayDay,
+      </if>
+      <if test="cancellday != null">
+        CancellDay,
+      </if>
+      <if test="cancellreason != null">
+        CancellReason,
+      </if>
+      <if test="rejectreason != null">
+        RejectReason,
+      </if>
+      <if test="refpayreason != null">
+        RefPayReason,
+      </if>
+      <if test="finishday != null">
+        FinishDay,
+      </if>
+      <if test="evalevel != null">
+        EvaLevel,
+      </if>
+      <if test="achieveid != null">
+        AchieveId,
+      </if>
+      <if test="buycount != null">
+        BuyCount,
+      </if>
+      <if test="transfertype != null">
+        TransferType,
+      </if>
+      <if test="isloan != null">
+        IsLoan,
+      </if>
+      <if test="loanday != null">
+        LoanDay,
+      </if>
+      <if test="rofund != null">
+        Rofund,
+      </if>
+      <if test="ordertype != null">
+        OrderType,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="orderid != null">
+        #{orderid,jdbcType=INTEGER},
+      </if>
+      <if test="sourceid != null">
+        #{sourceid,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="publisher != null">
+        #{publisher,jdbcType=CHAR},
+      </if>
+      <if test="receiver != null">
+        #{receiver,jdbcType=CHAR},
+      </if>
+      <if test="details != null">
+        #{details,jdbcType=VARCHAR},
+      </if>
+      <if test="isspecify != null">
+        #{isspecify,jdbcType=INTEGER},
+      </if>
+      <if test="areaid != null">
+        #{areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="iscontrast != null">
+        #{iscontrast,jdbcType=INTEGER},
+      </if>
+      <if test="contrastid != null">
+        #{contrastid,jdbcType=INTEGER},
+      </if>
+      <if test="islegal != null">
+        #{islegal,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="paytype != null">
+        #{paytype,jdbcType=INTEGER},
+      </if>
+      <if test="ispay != null">
+        #{ispay,jdbcType=INTEGER},
+      </if>
+      <if test="finish != null">
+        #{finish,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="satisfy != null">
+        #{satisfy,jdbcType=INTEGER},
+      </if>
+      <if test="publishday != null">
+        #{publishday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastday != null">
+        #{lastday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="takeday != null">
+        #{takeday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payday != null">
+        #{payday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cancellday != null">
+        #{cancellday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cancellreason != null">
+        #{cancellreason,jdbcType=VARCHAR},
+      </if>
+      <if test="rejectreason != null">
+        #{rejectreason,jdbcType=VARCHAR},
+      </if>
+      <if test="refpayreason != null">
+        #{refpayreason,jdbcType=VARCHAR},
+      </if>
+      <if test="finishday != null">
+        #{finishday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evalevel != null">
+        #{evalevel,jdbcType=INTEGER},
+      </if>
+      <if test="achieveid != null">
+        #{achieveid,jdbcType=CHAR},
+      </if>
+      <if test="buycount != null">
+        #{buycount,jdbcType=INTEGER},
+      </if>
+      <if test="transfertype != null">
+        #{transfertype,jdbcType=INTEGER},
+      </if>
+      <if test="isloan != null">
+        #{isloan,jdbcType=INTEGER},
+      </if>
+      <if test="loanday != null">
+        #{loanday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rofund != null">
+        #{rofund,jdbcType=INTEGER},
+      </if>
+      <if test="ordertype != null">
+        #{ordertype,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzj.entity.TOrder">
+    update order
+    <set>
+      <if test="orderid != null">
+        OrderId = #{orderid,jdbcType=INTEGER},
+      </if>
+      <if test="sourceid != null">
+        SourceId = #{sourceid,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="publisher != null">
+        Publisher = #{publisher,jdbcType=CHAR},
+      </if>
+      <if test="receiver != null">
+        Receiver = #{receiver,jdbcType=CHAR},
+      </if>
+      <if test="details != null">
+        Details = #{details,jdbcType=VARCHAR},
+      </if>
+      <if test="isspecify != null">
+        IsSpecify = #{isspecify,jdbcType=INTEGER},
+      </if>
+      <if test="areaid != null">
+        AreaId = #{areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="iscontrast != null">
+        IsContrast = #{iscontrast,jdbcType=INTEGER},
+      </if>
+      <if test="contrastid != null">
+        ContrastId = #{contrastid,jdbcType=INTEGER},
+      </if>
+      <if test="islegal != null">
+        IsLegal = #{islegal,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        Price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="paytype != null">
+        PayType = #{paytype,jdbcType=INTEGER},
+      </if>
+      <if test="ispay != null">
+        IsPay = #{ispay,jdbcType=INTEGER},
+      </if>
+      <if test="finish != null">
+        Finish = #{finish,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        State = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="satisfy != null">
+        Satisfy = #{satisfy,jdbcType=INTEGER},
+      </if>
+      <if test="publishday != null">
+        PublishDay = #{publishday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastday != null">
+        LastDay = #{lastday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="takeday != null">
+        TakeDay = #{takeday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payday != null">
+        PayDay = #{payday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cancellday != null">
+        CancellDay = #{cancellday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cancellreason != null">
+        CancellReason = #{cancellreason,jdbcType=VARCHAR},
+      </if>
+      <if test="rejectreason != null">
+        RejectReason = #{rejectreason,jdbcType=VARCHAR},
+      </if>
+      <if test="refpayreason != null">
+        RefPayReason = #{refpayreason,jdbcType=VARCHAR},
+      </if>
+      <if test="finishday != null">
+        FinishDay = #{finishday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evalevel != null">
+        EvaLevel = #{evalevel,jdbcType=INTEGER},
+      </if>
+      <if test="achieveid != null">
+        AchieveId = #{achieveid,jdbcType=CHAR},
+      </if>
+      <if test="buycount != null">
+        BuyCount = #{buycount,jdbcType=INTEGER},
+      </if>
+      <if test="transfertype != null">
+        TransferType = #{transfertype,jdbcType=INTEGER},
+      </if>
+      <if test="isloan != null">
+        IsLoan = #{isloan,jdbcType=INTEGER},
+      </if>
+      <if test="loanday != null">
+        LoanDay = #{loanday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rofund != null">
+        Rofund = #{rofund,jdbcType=INTEGER},
+      </if>
+      <if test="ordertype != null">
+        OrderType = #{ordertype,jdbcType=INTEGER},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zzj.entity.TOrder">
+    update order
+    set OrderId = #{orderid,jdbcType=INTEGER},
+      SourceId = #{sourceid,jdbcType=CHAR},
+      Name = #{name,jdbcType=VARCHAR},
+      Publisher = #{publisher,jdbcType=CHAR},
+      Receiver = #{receiver,jdbcType=CHAR},
+      Details = #{details,jdbcType=VARCHAR},
+      IsSpecify = #{isspecify,jdbcType=INTEGER},
+      AreaId = #{areaid,jdbcType=VARCHAR},
+      IsContrast = #{iscontrast,jdbcType=INTEGER},
+      ContrastId = #{contrastid,jdbcType=INTEGER},
+      IsLegal = #{islegal,jdbcType=INTEGER},
+      Price = #{price,jdbcType=DECIMAL},
+      PayType = #{paytype,jdbcType=INTEGER},
+      IsPay = #{ispay,jdbcType=INTEGER},
+      Finish = #{finish,jdbcType=INTEGER},
+      State = #{state,jdbcType=INTEGER},
+      Satisfy = #{satisfy,jdbcType=INTEGER},
+      PublishDay = #{publishday,jdbcType=TIMESTAMP},
+      LastDay = #{lastday,jdbcType=TIMESTAMP},
+      TakeDay = #{takeday,jdbcType=TIMESTAMP},
+      PayDay = #{payday,jdbcType=TIMESTAMP},
+      CancellDay = #{cancellday,jdbcType=TIMESTAMP},
+      CancellReason = #{cancellreason,jdbcType=VARCHAR},
+      RejectReason = #{rejectreason,jdbcType=VARCHAR},
+      RefPayReason = #{refpayreason,jdbcType=VARCHAR},
+      FinishDay = #{finishday,jdbcType=TIMESTAMP},
+      EvaLevel = #{evalevel,jdbcType=INTEGER},
+      AchieveId = #{achieveid,jdbcType=CHAR},
+      BuyCount = #{buycount,jdbcType=INTEGER},
+      TransferType = #{transfertype,jdbcType=INTEGER},
+      IsLoan = #{isloan,jdbcType=INTEGER},
+      LoanDay = #{loanday,jdbcType=TIMESTAMP},
+      Rofund = #{rofund,jdbcType=INTEGER},
+      OrderType = #{ordertype,jdbcType=INTEGER}
+    where Id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

@@ -1,0 +1,66 @@
+package com.imt.pat.entity;
+
+import java.io.Serializable;
+
+public class PageLimit implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private int offset;//起始量
+	private int startlimit;//偏移量
+	private int patient_isDel;//是否删除
+	private String currdate;//现在的时间
+	private String ndate;//初始时间
+	private String ldate;//现在-30天 的日期
+	private int sys_user_id;//userid
+	public int getSys_user_id() {
+		return sys_user_id;
+	}
+	public void setSys_user_id(int sys_user_id) {
+		this.sys_user_id = sys_user_id;
+	}
+	public String getCurrdate() {
+		return currdate;
+	}
+	public void setCurrdate(String currdate) {
+		this.currdate = currdate;
+	}
+	public String getNdate() {
+		return ndate;
+	}
+	public void setNdate(String ndate) {
+		this.ndate = ndate;
+	}
+	public String getLdate() {
+		return ldate;
+	}
+	public void setLdate(String ldate) {
+		this.ldate = ldate;
+	}
+
+	public int getPatient_isDel() {
+		return patient_isDel;
+	}
+	public void setPatient_isDel(int patient_isDel) {
+		this.patient_isDel = patient_isDel;
+	}
+	public int getOffset() {
+		return offset;
+	}
+	public void setOffset(int offset) {
+		this.offset = offset;
+	}
+	public int getStartlimit() {
+		return startlimit;
+	}
+	public void setStartlimit(int startlimit) {
+		this.startlimit = startlimit;
+	}
+	@Override
+	public String toString() {
+		return "pageLimit [offset=" + offset + ", startlimit=" + startlimit
+				+ "]";
+	}
+	
+}

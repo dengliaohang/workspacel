@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zzj.dao.MerchandiseMapper">
+  <resultMap id="BaseResultMap" type="com.zzj.entity.Merchandise">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="department" jdbcType="VARCHAR" property="department" />
+    <result column="creater" jdbcType="VARCHAR" property="creater" />
+    <result column="keyWord" jdbcType="VARCHAR" property="keyword" />
+    <result column="finishFay" jdbcType="TIMESTAMP" property="finishfay" />
+    <result column="areaId" jdbcType="VARCHAR" property="areaid" />
+    <result column="regionId" jdbcType="VARCHAR" property="regionid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="maturity" jdbcType="VARCHAR" property="maturity" />
+    <result column="transferType" jdbcType="INTEGER" property="transfertype" />
+    <result column="publishId" jdbcType="VARCHAR" property="publishid" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="isBargain" jdbcType="INTEGER" property="isbargain" />
+    <result column="stock" jdbcType="INTEGER" property="stock" />
+    <result column="count" jdbcType="INTEGER" property="count" />
+    <result column="visit" jdbcType="INTEGER" property="visit" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="payType" jdbcType="INTEGER" property="paytype" />
+    <result column="lastDay" jdbcType="TIMESTAMP" property="lastday" />
+    <result column="isSpecial" jdbcType="INTEGER" property="isspecial" />
+    <result column="expertId" jdbcType="INTEGER" property="expertid" />
+    <result column="serviceType" jdbcType="INTEGER" property="servicetype" />
+    <result column="merchandiseType" jdbcType="INTEGER" property="merchandisetype" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.zzj.entity.Merchandise">
+    <result column="description" jdbcType="LONGVARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, code, department, creater, keyWord, finishFay, areaId, regionId, name, image, 
+    maturity, transferType, publishId, price, isBargain, stock, count, visit, state, 
+    payType, lastDay, isSpecial, expertId, serviceType, merchandiseType
+  </sql>
+  <sql id="Blob_Column_List">
+    description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from merchandise
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from merchandise
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zzj.entity.Merchandise">
+    insert into merchandise (id, code, department, 
+      creater, keyWord, finishFay, 
+      areaId, regionId, name, 
+      image, maturity, transferType, 
+      publishId, price, isBargain, 
+      stock, count, visit, 
+      state, payType, lastDay, 
+      isSpecial, expertId, serviceType, 
+      merchandiseType, description)
+    values (#{id,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{department,jdbcType=VARCHAR}, 
+      #{creater,jdbcType=VARCHAR}, #{keyword,jdbcType=VARCHAR}, #{finishfay,jdbcType=TIMESTAMP}, 
+      #{areaid,jdbcType=VARCHAR}, #{regionid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{image,jdbcType=VARCHAR}, #{maturity,jdbcType=VARCHAR}, #{transfertype,jdbcType=INTEGER}, 
+      #{publishid,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, #{isbargain,jdbcType=INTEGER}, 
+      #{stock,jdbcType=INTEGER}, #{count,jdbcType=INTEGER}, #{visit,jdbcType=INTEGER}, 
+      #{state,jdbcType=INTEGER}, #{paytype,jdbcType=INTEGER}, #{lastday,jdbcType=TIMESTAMP}, 
+      #{isspecial,jdbcType=INTEGER}, #{expertid,jdbcType=INTEGER}, #{servicetype,jdbcType=INTEGER}, 
+      #{merchandisetype,jdbcType=INTEGER}, #{description,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzj.entity.Merchandise">
+    insert into merchandise
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="department != null">
+        department,
+      </if>
+      <if test="creater != null">
+        creater,
+      </if>
+      <if test="keyword != null">
+        keyWord,
+      </if>
+      <if test="finishfay != null">
+        finishFay,
+      </if>
+      <if test="areaid != null">
+        areaId,
+      </if>
+      <if test="regionid != null">
+        regionId,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="image != null">
+        image,
+      </if>
+      <if test="maturity != null">
+        maturity,
+      </if>
+      <if test="transfertype != null">
+        transferType,
+      </if>
+      <if test="publishid != null">
+        publishId,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="isbargain != null">
+        isBargain,
+      </if>
+      <if test="stock != null">
+        stock,
+      </if>
+      <if test="count != null">
+        count,
+      </if>
+      <if test="visit != null">
+        visit,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="paytype != null">
+        payType,
+      </if>
+      <if test="lastday != null">
+        lastDay,
+      </if>
+      <if test="isspecial != null">
+        isSpecial,
+      </if>
+      <if test="expertid != null">
+        expertId,
+      </if>
+      <if test="servicetype != null">
+        serviceType,
+      </if>
+      <if test="merchandisetype != null">
+        merchandiseType,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="creater != null">
+        #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword != null">
+        #{keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="finishfay != null">
+        #{finishfay,jdbcType=TIMESTAMP},
+      </if>
+      <if test="areaid != null">
+        #{areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="regionid != null">
+        #{regionid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="maturity != null">
+        #{maturity,jdbcType=VARCHAR},
+      </if>
+      <if test="transfertype != null">
+        #{transfertype,jdbcType=INTEGER},
+      </if>
+      <if test="publishid != null">
+        #{publishid,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="isbargain != null">
+        #{isbargain,jdbcType=INTEGER},
+      </if>
+      <if test="stock != null">
+        #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="count != null">
+        #{count,jdbcType=INTEGER},
+      </if>
+      <if test="visit != null">
+        #{visit,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="paytype != null">
+        #{paytype,jdbcType=INTEGER},
+      </if>
+      <if test="lastday != null">
+        #{lastday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isspecial != null">
+        #{isspecial,jdbcType=INTEGER},
+      </if>
+      <if test="expertid != null">
+        #{expertid,jdbcType=INTEGER},
+      </if>
+      <if test="servicetype != null">
+        #{servicetype,jdbcType=INTEGER},
+      </if>
+      <if test="merchandisetype != null">
+        #{merchandisetype,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzj.entity.Merchandise">
+    update merchandise
+    <set>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="creater != null">
+        creater = #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword != null">
+        keyWord = #{keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="finishfay != null">
+        finishFay = #{finishfay,jdbcType=TIMESTAMP},
+      </if>
+      <if test="areaid != null">
+        areaId = #{areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="regionid != null">
+        regionId = #{regionid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="maturity != null">
+        maturity = #{maturity,jdbcType=VARCHAR},
+      </if>
+      <if test="transfertype != null">
+        transferType = #{transfertype,jdbcType=INTEGER},
+      </if>
+      <if test="publishid != null">
+        publishId = #{publishid,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="isbargain != null">
+        isBargain = #{isbargain,jdbcType=INTEGER},
+      </if>
+      <if test="stock != null">
+        stock = #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="count != null">
+        count = #{count,jdbcType=INTEGER},
+      </if>
+      <if test="visit != null">
+        visit = #{visit,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="paytype != null">
+        payType = #{paytype,jdbcType=INTEGER},
+      </if>
+      <if test="lastday != null">
+        lastDay = #{lastday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isspecial != null">
+        isSpecial = #{isspecial,jdbcType=INTEGER},
+      </if>
+      <if test="expertid != null">
+        expertId = #{expertid,jdbcType=INTEGER},
+      </if>
+      <if test="servicetype != null">
+        serviceType = #{servicetype,jdbcType=INTEGER},
+      </if>
+      <if test="merchandisetype != null">
+        merchandiseType = #{merchandisetype,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zzj.entity.Merchandise">
+    update merchandise
+    set code = #{code,jdbcType=VARCHAR},
+      department = #{department,jdbcType=VARCHAR},
+      creater = #{creater,jdbcType=VARCHAR},
+      keyWord = #{keyword,jdbcType=VARCHAR},
+      finishFay = #{finishfay,jdbcType=TIMESTAMP},
+      areaId = #{areaid,jdbcType=VARCHAR},
+      regionId = #{regionid,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      maturity = #{maturity,jdbcType=VARCHAR},
+      transferType = #{transfertype,jdbcType=INTEGER},
+      publishId = #{publishid,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      isBargain = #{isbargain,jdbcType=INTEGER},
+      stock = #{stock,jdbcType=INTEGER},
+      count = #{count,jdbcType=INTEGER},
+      visit = #{visit,jdbcType=INTEGER},
+      state = #{state,jdbcType=INTEGER},
+      payType = #{paytype,jdbcType=INTEGER},
+      lastDay = #{lastday,jdbcType=TIMESTAMP},
+      isSpecial = #{isspecial,jdbcType=INTEGER},
+      expertId = #{expertid,jdbcType=INTEGER},
+      serviceType = #{servicetype,jdbcType=INTEGER},
+      merchandiseType = #{merchandisetype,jdbcType=INTEGER},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zzj.entity.Merchandise">
+    update merchandise
+    set code = #{code,jdbcType=VARCHAR},
+      department = #{department,jdbcType=VARCHAR},
+      creater = #{creater,jdbcType=VARCHAR},
+      keyWord = #{keyword,jdbcType=VARCHAR},
+      finishFay = #{finishfay,jdbcType=TIMESTAMP},
+      areaId = #{areaid,jdbcType=VARCHAR},
+      regionId = #{regionid,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      maturity = #{maturity,jdbcType=VARCHAR},
+      transferType = #{transfertype,jdbcType=INTEGER},
+      publishId = #{publishid,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      isBargain = #{isbargain,jdbcType=INTEGER},
+      stock = #{stock,jdbcType=INTEGER},
+      count = #{count,jdbcType=INTEGER},
+      visit = #{visit,jdbcType=INTEGER},
+      state = #{state,jdbcType=INTEGER},
+      payType = #{paytype,jdbcType=INTEGER},
+      lastDay = #{lastday,jdbcType=TIMESTAMP},
+      isSpecial = #{isspecial,jdbcType=INTEGER},
+      expertId = #{expertid,jdbcType=INTEGER},
+      serviceType = #{servicetype,jdbcType=INTEGER},
+      merchandiseType = #{merchandisetype,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+</mapper>

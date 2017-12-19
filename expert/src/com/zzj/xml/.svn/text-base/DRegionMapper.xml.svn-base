@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzj.dao.DRegionMapper" >
+  <resultMap id="BaseResultMap" type="com.zzj.entity.DRegion" >
+    <result column="RegionId" property="regionid" jdbcType="CHAR" />
+    <result column="Name" property="name" jdbcType="NVARCHAR" />
+    <result column="Class" property="class" jdbcType="CHAR" />
+    <result column="Zone" property="zone" jdbcType="NVARCHAR" />
+    <result column="ZoneCode" property="zonecode" jdbcType="CHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.zzj.entity.DRegion" >
+    insert into D_region (RegionId, Name, Class, 
+      Zone, ZoneCode)
+    values (#{regionid,jdbcType=CHAR}, #{name,jdbcType=NVARCHAR}, #{class,jdbcType=CHAR}, 
+      #{zone,jdbcType=NVARCHAR}, #{zonecode,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzj.entity.DRegion" >
+    insert into D_region
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="regionid != null" >
+        RegionId,
+      </if>
+      <if test="name != null" >
+        Name,
+      </if>
+      <if test="class != null" >
+        Class,
+      </if>
+      <if test="zone != null" >
+        Zone,
+      </if>
+      <if test="zonecode != null" >
+        ZoneCode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="regionid != null" >
+        #{regionid,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=NVARCHAR},
+      </if>
+      <if test="class != null" >
+        #{class,jdbcType=CHAR},
+      </if>
+      <if test="zone != null" >
+        #{zone,jdbcType=NVARCHAR},
+      </if>
+      <if test="zonecode != null" >
+        #{zonecode,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzj.dao.RecentcontactpeopleMapper" >
+  <resultMap id="BaseResultMap" type="com.zzj.entity.Recentcontactpeople" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="myId" property="myid" jdbcType="CHAR" />
+    <result column="myYhm" property="myyhm" jdbcType="VARCHAR" />
+    <result column="myRecentPeople" property="myrecentpeople" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, myId, myYhm, myRecentPeople
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from recentcontactpeople
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from recentcontactpeople
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zzj.entity.Recentcontactpeople" >
+    insert into recentcontactpeople (id, myId, myYhm, 
+      myRecentPeople)
+    values (#{id,jdbcType=INTEGER}, #{myid,jdbcType=CHAR}, #{myyhm,jdbcType=VARCHAR}, 
+      #{myrecentpeople,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzj.entity.Recentcontactpeople" >
+    insert into recentcontactpeople
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="myid != null" >
+        myId,
+      </if>
+      <if test="myyhm != null" >
+        myYhm,
+      </if>
+      <if test="myrecentpeople != null" >
+        myRecentPeople,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="myid != null" >
+        #{myid,jdbcType=CHAR},
+      </if>
+      <if test="myyhm != null" >
+        #{myyhm,jdbcType=VARCHAR},
+      </if>
+      <if test="myrecentpeople != null" >
+        #{myrecentpeople,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzj.entity.Recentcontactpeople" >
+    update recentcontactpeople
+    <set >
+      <if test="myid != null" >
+        myId = #{myid,jdbcType=CHAR},
+      </if>
+      <if test="myyhm != null" >
+        myYhm = #{myyhm,jdbcType=VARCHAR},
+      </if>
+      <if test="myrecentpeople != null" >
+        myRecentPeople = #{myrecentpeople,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zzj.entity.Recentcontactpeople" >
+    update recentcontactpeople
+    set myId = #{myid,jdbcType=CHAR},
+      myYhm = #{myyhm,jdbcType=VARCHAR},
+      myRecentPeople = #{myrecentpeople,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

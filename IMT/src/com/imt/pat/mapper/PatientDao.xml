@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.imt.pat.dao.PatientDao">
+	<insert id="addPatient" parameterType="patient">
+		insert into patient_resource
+		values
+		(
+		#{patient_id},
+		#{sys_user_id},
+		#{patient_name},
+		#{patient_age},
+		#{patient_sex},
+		#{patient_consultation_name},
+		#{patient_consultation_country},
+		#{patient_consultation_phone},
+		#{patient_sysptom},
+		#{patient_entity},
+		#{patient_intention_level},
+		#{patient_report_state},
+		#{patient_passport_state},
+		#{remark},
+		#{patient_address},
+		#{patient_consultation_relation},
+		#{consultation_address},
+		#{consultation_email},
+		#{critical_state},
+		#{resource_state},
+		#{hospital_state},
+		#{report_date},
+		#{patient_isDel},
+		#{ue},
+		#{report_user_id},
+		#{net},
+		#{rep_datel},
+		#{update_date}
+		)
+	</insert>
+	<!-- 根据名字模糊查询 -->
+	<select id="queryPatientByText" parameterType="pLimit"  resultType="com.imt.pat.entity.patientEntity">
+		select * from patient_resource where patient_isDel=#{patient_isDel}
+		<if test="sys_user_id !=null and sys_user_id !=''">  
+    	 and	sys_user_id=#{sys_user_id}  
+		</if>
+		<if test="report_user_id !=null and report_user_id!=''">  
+    	 and	report_user_id=#{report_user_id}  
+		</if> 
+		and patient_name like CONCAT(CONCAT('%',#{patient_name}), '%') LIMIT #{offset},#{startlimit}
+	</select>
+	<!-- 根据名字模糊查询数量-->
+	<select id="queryPatientByTextCount" parameterType="pLimit"  resultType="java.lang.Integer">
+		select count(*) from patient_resource where patient_isDel=#{patient_isDel}
+		<if test="sys_user_id !=null and sys_user_id !=''">  
+    	 and	sys_user_id=#{sys_user_id}  
+		</if>
+		<if test="report_user_id !=null and report_user_id!=''">  
+    	 and	report_user_id=#{report_user_id}  
+		</if> 
+		and patient_name like CONCAT(CONCAT('%',#{patient_name}), '%') 
+	</select>
+	<select id="queryPatientById" parameterType="patient"  resultType="com.imt.pat.entity.patientEntity">
+		select * from patient_resource where patient_id=#{patient_id}
+	</select>
+	<select id="queryAllPatient" parameterType="pLimit"  resultType="com.imt.pat.entity.patientEntity">
+		select * from patient_resource where patient_isDel=#{patient_isDel} 
+		<if test="sys_user_id != null and sys_user_id !=''">  
+			and sys_user_id=#{sys_user_id} 
+		</if>
+		LIMIT #{offset},#{startlimit}
+	</select>
+	<!-- 查询所有患者 -->
+	<select id="queryAllPatientC" parameterType="pLimit"  resultType="com.imt.pat.entity.patientEntity">
+		select * from patient_resource where patient_isDel=#{patient_isDel}  LIMIT #{offset},#{startlimit}
+	</select>
+	<select id="queryAllPatientCountC" parameterType="patient"  resultType="java.lang.Integer">
+		select count(*) from patient_resource where patient_isDel=#{patient_isDel} 
+	</select>
+	<select id="queryAllPatientByk" parameterType="pLimit"  resultType="com.imt.pat.entity.patientEntity">
+		select * from patient_resource where patient_isDel=#{patient_isDel} and report_user_id=#{report_user_id} LIMIT #{offset},#{startlimit}
+	</select>
+	<select id="queryAllPatientCount" parameterType="patient"  resultType="java.lang.Integer">
+		select count(*) from patient_resource where patient_isDel=#{patient_isDel} 
+		<if test="sys_user_id != null and sys_user_id !=''">  
+			and sys_user_id=#{sys_user_id} 
+		</if>
+	</select>
+	<select id="queryAllPatientCountByk" parameterType="patient"  resultType="java.lang.Integer">
+		select count(*) from patient_resource where patient_isDel=#{patient_isDel} and report_user_id=#{report_user_id}
+	</select>
+	<select id="queryNewPatient" parameterType="pLimit" resultType="com.imt.pat.entity.patientEntity">
+		select * from patient_resource where report_date BETWEEN #{ldate} AND #{currdate}  
+		
+		<if test="sys_user_id != null and sys_user_id !='' "> 
+			and sys_user_id=#{sys_user_id} 
+		</if>
+		and patient_isDel=0 and resource_state='yes'    LIMIT #{offset},#{startlimit} 
+	</select>
+	<!-- 查询 这个时间段的有效资源数量 -->
+	<select id="queryNewPatientCount" parameterType="pLimit" resultType="java.lang.Integer">
+		select count(*) from patient_resource where report_date BETWEEN #{ldate} AND #{currdate} and patient_isDel=0 and resource_state='yes' 
+		<if test="sys_user_id != null and sys_user_id !=''">  
+			and sys_user_id=#{sys_user_id} 
+		</if>
+	</select>
+	<select id="queryOutPatient" parameterType="pLimit" resultType="com.imt.pat.entity.patientEntity">
+		select * from patient_resource where report_date  BETWEEN #{ndate} AND #{ldate} and resource_state='yes' 
+		<if test="sys_user_id != null and sys_user_id !=''  ">  
+			and sys_user_id=#{sys_user_id} 
+		</if>
+		and patient_isDel=0 LIMIT #{offset},#{startlimit} 
+	</select>
+	<!-- 查询这个时间段的有效资源数量 -->
+	<select id="queryOutPatientCount" parameterType="pLimit" resultType="java.lang.Integer">
+		select count(*) from patient_resource where report_date  BETWEEN #{ndate} AND #{ldate} and resource_state='yes'  
+		<if test="sys_user_id != null and sys_user_id !=''  ">  
+			and sys_user_id=#{sys_user_id} 
+		</if>
+	</select>
+	
+	<!-- 查询无效资源 -->
+	<select id="queryInvalidResource" parameterType="pLimit"  resultType="com.imt.pat.entity.patientEntity">
+		select * from patient_resource where patient_isDel=#{patient_isDel}   
+		<if test="sys_user_id != null and sys_user_id !=''  ">  
+			and sys_user_id=#{sys_user_id} 
+		</if>
+		and resource_state='no' LIMIT #{offset},#{startlimit}
+	</select>
+	
+	<!-- 查询无效资源数量 -->
+	<select id="queryInvalidResourceCount" parameterType="patient"  resultType="java.lang.Integer">
+		select count(*) from patient_resource where patient_isDel=#{patient_isDel}  
+		<if test="sys_user_id != null and sys_user_id !='' ">  
+			and sys_user_id=#{sys_user_id} 
+		</if>
+		and  resource_state='no'
+	</select>
+	
+	<update id="updatePatient" parameterType="int">
+		update  patient_resource set patient_isDel=1 where patient_id in
+        <foreach item="empItem" collection="array" open="(" separator="," close=")">
+            #{empItem}
+        </foreach>
+	</update>
+	<!-- 恢复已删除的记录 -->
+	<update id="recoveryPatient" parameterType="int">	
+			update  patient_resource set patient_isDel=0 where patient_id in
+        <foreach item="empItem" collection="array" open="(" separator="," close=")">
+            #{empItem}
+        </foreach>
+	</update>
+	<!-- 转资源 -->
+	<update id="updatePatientToUser" >	
+			update  patient_resource set sys_user_id=#{1} where patient_id = #{0}
+	</update>
+	<!-- 修改患者 -->
+	<update id="updatePatiento"  parameterType="patient" >	
+			update  patient_resource set sys_user_id=#{sys_user_id}, patient_name=#{patient_name} ,patient_age=#{patient_age},
+			patient_sex=#{patient_sex} ,patient_consultation_name=#{patient_consultation_name},patient_consultation_country=#{patient_consultation_country},
+			patient_consultation_phone=#{patient_consultation_phone},patient_sysptom=#{patient_sysptom},patient_entity=#{patient_entity},
+			patient_intention_level=#{patient_intention_level},patient_report_state=#{patient_report_state},
+			patient_passport_state=#{patient_passport_state},remark=#{remark},patient_address=#{patient_address},patient_consultation_relation=#{patient_consultation_relation},
+			consultation_address=#{consultation_address},consultation_email=#{consultation_email},critical_state=#{critical_state},resource_state=#{resource_state},
+			hospital_state=#{hospital_state},report_date=#{report_date},patient_isDel=#{patient_isDel},report_user_id=#{report_user_id},rep_datel=#{rep_datel},update_date=#{update_date}
+			 where patient_id=#{patient_id}
+	</update>
+		<!-- 查询所有国家 -->
+	<select id="queryAllCountry" resultType="com.imt.pat.entity.Country">
+		select * from country 
+	</select>
+	<!-- 添加国家 -->
+	<insert id="addCoun"  >
+		insert into country
+		values
+		(0,#{name})
+	</insert>
+	<!-- 分页查询国家 -->
+	<select id="queryAllCountryl" parameterType="pLimit" resultType="com.imt.pat.entity.Country">
+		select * from country  LIMIT #{offset},#{startlimit}
+	</select>
+	<!-- 通过国家查询患者门诊 -->
+	<select id="queryPatientByCoun" parameterType="pLimit" resultType="com.imt.pat.entity.patientEntity">
+		select * from patient_resource where sys_user_id=#{sys_user_id} and  
+		 patient_isDel=0 and patient_consultation_country=#{patient_consultation_country}
+		 LIMIT #{offset},#{startlimit}
+	</select>
+	<!-- 通过国家查询患者 客服-->
+	<select id="queryPatientByCounK" parameterType="pLimit" resultType="com.imt.pat.entity.patientEntity">
+		select * from patient_resource where report_user_id=#{report_user_id} and  
+		 patient_isDel=0 and patient_consultation_country=#{patient_consultation_country}
+		 LIMIT #{offset},#{startlimit}
+	</select>
+	<!-- 查询国家数量 -->
+	<select id="queryCountryCount"  resultType="java.lang.Integer">
+		select count(*) from country 
+	</select>
+	<!-- 查询国家数量门诊 -->
+	<select id="queryPatientByCounl" parameterType="pLimit"  resultType="java.lang.Integer">
+		select count(*) from patient_resource where patient_isDel=0 and  sys_user_id=#{sys_user_id} 
+		and patient_consultation_country=#{patient_consultation_country}
+	</select>
+		<!-- 查询国家数量客服 -->
+	<select id="queryPatientByCounKl"  parameterType="pLimit" resultType="java.lang.Integer">
+		select count(*) from patient_resource where patient_isDel=0 and  report_user_id=#{report_user_id}
+		and patient_consultation_country=#{patient_consultation_country}
+	</select>
+	<!-- 电话模糊查询 -->
+	<select id="queryPatientByPhone" parameterType="pLimit"  resultType="com.imt.pat.entity.patientEntity">
+		select * from patient_resource where patient_isDel=0 
+		and patient_consultation_phone like CONCAT(CONCAT('%',#{phone}), '%')
+		<if test="sys_user_id !=null and sys_user_id !=''">  
+    	 and	sys_user_id=#{sys_user_id}  
+		</if>
+		<if test="report_user_id !=null and report_user_id!=''">  
+    	 and	report_user_id=#{report_user_id}  
+		</if> 
+		LIMIT #{offset},#{startlimit}
+	</select>
+	<!-- 电话模糊查询数量 -->
+	<select id="queryPatientByPhonel" parameterType="pLimit"  resultType="java.lang.Integer">
+		select count(*) from patient_resource where patient_isDel=0 
+		and patient_name like CONCAT(CONCAT('%',#{phone}), '%')
+		<if test="sys_user_id !=null and sys_user_id !=''">  
+    	 and	sys_user_id=#{sys_user_id}  
+		</if>
+		<if test="report_user_id != null and report_user_id !=''">  
+    	 and	report_user_id=#{report_user_id}  
+		</if> 
+	</select>
+	<!-- 邮箱模糊查询 -->
+	<select id="queryPatientByEmail" parameterType="pLimit"  resultType="com.imt.pat.entity.patientEntity">
+		select * from patient_resource where patient_isDel=0 
+		and consultation_email like CONCAT(CONCAT('%',#{email}), '%')
+    	<if test="sys_user_id !=null and sys_user_id !=''">  
+    	 and	sys_user_id=#{sys_user_id}  
+		</if>
+		<if test="report_user_id != null and report_user_id !=''">  
+    	 and	report_user_id=#{report_user_id}  
+		</if> 
+		LIMIT #{offset},#{startlimit}
+	</select>
+	<!-- 邮箱模糊查询数量 -->
+	<select id="queryPatientByEmaill" parameterType="pLimit"  resultType="java.lang.Integer">
+		select count(*) from patient_resource where patient_isDel=0 
+		and consultation_email like CONCAT(CONCAT('%',#{email}), '%')
+		<if test="sys_user_id !=null and sys_user_id !=''">  
+    	 and	sys_user_id=#{sys_user_id}  
+		</if>
+		<if test="report_user_id != null and report_user_id !=''">  
+    	 and	report_user_id=#{report_user_id}  
+		</if> 
+	</select>
+	
+	<!-- 修改国家 -->
+	<update id="updateCountryl" parameterType="country" >	
+			update  country set name=#{name} where id = #{id}
+	</update>
+	<!-- 查询所有病种 -->
+	<select id="queryAllDisease" 	resultType="com.imt.pat.entity.Disease">
+		select * from disease
+	</select>
+	<!-- 修改病种 -->
+	<update id="updateDiseasel" parameterType="disease" >	
+			update  disease set name=#{name} where id = #{id}
+	</update>
+	<!-- 分页查询病种 -->
+	<select id="queryAllDiseasel" parameterType="pLimit" resultType="com.imt.pat.entity.Disease">
+		select * from disease  LIMIT #{offset},#{startlimit}
+	</select>
+	<!-- 添加病种 -->
+	<insert id="addDisease"  >
+		insert into disease
+		values(0,#{name})
+	</insert>
+	<!-- 查询病种数量 -->
+	<select id="queryDiseaseCount"  resultType="java.lang.Integer">
+		select count(*) from disease 
+	</select>
+	<!-- 查询所有网址-->
+	<select id="queryAllNet"	resultType="com.imt.pat.entity.Net">
+		select * from net
+	</select>
+	<!-- 修改网址 -->
+	<update id="updateNetl" parameterType="net" >	
+			update  net set name=#{name} where id = #{id}
+	</update>
+	<!-- 分页查询网址-->
+	<select id="queryAllNetl" parameterType="pLimit" resultType="com.imt.pat.entity.Net">
+		select * from net  LIMIT #{offset},#{startlimit}
+	</select>
+	<!-- 添加网址 -->
+	<insert id="addNet"  >
+		insert into net
+		values(0,#{name})
+	</insert>
+	<!-- 查询网址数量 -->
+	<select id="queryNetCount"  resultType="java.lang.Integer">
+		select count(*) from net 
+	</select>
+	<!-- 通过id查询国家 -->
+	<select id="queryCountryById" resultType="java.lang.String">
+		select name from country where id=#{id}
+	</select>
+	
+	<!-- 通过id查询病种 -->
+	<select id="queryDiseaseById" 	resultType="java.lang.String">
+		select name from disease where id=#{id}
+	</select>
+	<!-- 通过id查询网址 -->
+	<select id="queryNetById"	resultType="java.lang.String">
+		select name from net where id=#{id}
+	</select>
+	<!-- 电话查重 -->
+	<select id="testPhone"	resultType="com.imt.pat.entity.patientEntity">
+		select * from patient_resource where patient_consultation_phone like CONCAT('%',#{phone})
+	</select>
+	<!-- 邮箱查重 -->
+	<select id="testEmail"	resultType="com.imt.pat.entity.patientEntity">
+		select * from patient_resource where consultation_email = #{email}
+	</select>
+	<!-- 查询今天录入资源量 -->
+	<select id="queryTodayRes"	resultType="java.lang.Integer">
+		select count(*) from patient_resource where report_date like CONCAT(#{0},'%') and net=#{1}
+	</select>
+	<!-- 查询昨天录入资源量 -->
+	<select id="queryLastRes" 	resultType="java.lang.Integer">
+		select count(*) from patient_resource where report_date like CONCAT(#{0},'%') and net=#{1}
+	</select>
+</mapper>
